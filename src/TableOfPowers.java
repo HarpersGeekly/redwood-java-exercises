@@ -29,9 +29,9 @@ public class TableOfPowers {
         long userCubed;
         String userWantsToContinue;
 
+            System.out.println("This app will display a Table of Powers: a number, that number squared, and that number cubed.");
         do {
 //        Prompt the user to enter an integer.
-            System.out.println("This app will display a Table of Powers");
             System.out.println("Type a number to go up to:");
             userInteger = scan.nextInt();
 
@@ -56,7 +56,7 @@ public class TableOfPowers {
 
         } while (userWantsToContinue.equalsIgnoreCase("Yes")
                 || userWantsToContinue.equalsIgnoreCase("Y"));
-        // while user says yes, do it again...
+        // while user wants to continue, do it again...
         //otherwise...
         System.out.println("See ya later!");
     }
