@@ -5,8 +5,6 @@ import java.util.Scanner;
  */
 public class TableOfPowers {
     public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
-
 
 //        Display a table of powers.
 //        Assume that the user will enter valid data.
@@ -25,6 +23,7 @@ public class TableOfPowers {
 //        4      | 16      | 64
 //        5      | 25      | 125
 
+        Scanner scan = new Scanner(System.in);
         int userInteger;
         long userSquared;
         long userCubed;
@@ -38,24 +37,28 @@ public class TableOfPowers {
 
 //        Display a table of squares and cubes from 1 to the value entered.
             System.out.println("Here is your table: ");
+            System.out.println("number | squared | cubed\n" + "------ | ------- | -----");
+
             for (int i = 1; i <= userInteger; i++) {
-            userSquared = (i * i);
-            userCubed = (i * i * i);
-            System.out.println(i + "|" + userSquared + "|" + userCubed);
+                userSquared = (i * i);
+                userCubed = (i * i * i);
+                System.out.printf("%-7s| ", i);
+                System.out.printf("%-8s| ", userSquared);
+                System.out.printf("%-5s", userCubed);
+                System.out.println();
             }
+
             scan.nextLine();
 
 //        Ask if the user wants to continue.
             System.out.println("Would you like to continue? Yes/No: ");
             userWantsToContinue = scan.nextLine();
 
-        } while (userWantsToContinue.equals("Yes")
-                || userWantsToContinue.equals("Y")
-                || userWantsToContinue.equals("yes")
-                || userWantsToContinue.equals("y"));
-
+        } while (userWantsToContinue.equalsIgnoreCase("Yes")
+                || userWantsToContinue.equalsIgnoreCase("Y"));
+        // while user says yes, do it again...
+        //otherwise...
         System.out.println("See ya later!");
-
     }
 }
 
