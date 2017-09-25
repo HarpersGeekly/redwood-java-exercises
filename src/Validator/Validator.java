@@ -47,6 +47,7 @@ public class Validator {
             scan.next();
             return getInt(prompt);
         }
+        scan.nextLine();
         return intInput;
     }
 
@@ -76,6 +77,7 @@ public class Validator {
             scan.next();
             return getDouble(prompt);
         }
+        scan.nextLine();
         return doubleInput;
     }
 
@@ -102,6 +104,7 @@ public class Validator {
 //            }
             return getDoubleWithinRange(prompt, min, max);
         }
+        scan.nextLine();
         return doubleInput;
     }
 
@@ -113,12 +116,11 @@ public class Validator {
         }
     }
 
-
 //        boolean yesNo()
 //        The yesNo method should return true if the user enters y, yes, or variants thereof, and false otherwise.
-    
-//    public boolean yesNo() {
-//
-//    }
+    public boolean yesNo() {
+        String userWantsToContinue = scan.nextLine();
+        return userWantsToContinue.trim().equalsIgnoreCase("Y") || userWantsToContinue.trim().equalsIgnoreCase("Yes");
+    }
 
 }
