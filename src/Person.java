@@ -1,34 +1,75 @@
+
+
 /**
  * Created by RyanHarper on 9/25/17.
  */
-    // public = anyone has access to this class/attribute/function
-    // private = no-one can see this class/attribute/function. Kinda like in the real world.
-    // should the user be able to change it? What can the user use out of this object?
-    // We start thinking about a client and a server. The client is an object that calls a method on another object.
-// and the server is an object that does an operation on behalf of another object. We've been doing this already:
+//    ============================================   Object basics =====================================================
 
-    // objects talk to each other and collaborate! like System.out.println. or PrintStream out = System.out.
-// Scanner and System are the server (service to help me do something)... and I'm the client
-    //
-
-    // how do you want the client to use this class?
+//    Create Person class inside of src that has a private name property that is a string.
 public class Person {
-// (Remember, we use block scope in Java. These variables are available within the Person code block.)
-    private String firstName; // local variable.
-    private String lastName;
-    public static int population = 0; //shared
 
-    //constructor method showing use of both a ".this" or an "aSomething"
-    public /* no return type */ Person /* the same as the class name */(String firstName, String aLastName) {
-        this.firstName = firstName;
-        lastName = aLastName; // using ".this", this.firstName = firstName, makes it so the constructor knows that it's the firstName from the Person class.
-        // But some Java developers will declare aFirstName, aLastName to mitigate using ".this"
-        // ".this" should only be used when the parameters are the same as the class variables, as seen above
-        population++;
+    private String name;
+
+    // create the following methods:
+    // a method that returns the person's name
+
+    public String getName() {
+        return name;
     }
 
-    public String fullName() {
-        return firstName + " " + lastName;
+    // a method that changes the name property to the passed value
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    // a method that prints a message to the console using the person's name
+    public void sayHello() {
+        System.out.println("Hello, " + name + "!");
+    }
+
+//      The class should have a constructor that accepts a string value and sets the person's name to the passed string.
+//  ========================================= constructor ==============================================================
+
+    public Person(String name) {
+        this.name = name;
+    }
+
+//        Create a main method on the class that creates a new Person object and tests the above methods.
+//  ========================================== Person's Main Method ====================================================
+
+    public static void main(String[] args) {
+
+        Person ryan = new Person("Ryan");
+
+        System.out.println(ryan);
+        System.out.println(ryan.getName());
+        ryan.setName("Harper");
+        ryan.sayHello();
+        System.out.println(ryan.getName());
+        ryan.setName("Ryan");
+        ryan.sayHello();
+        System.out.println(ryan.getName());
+        System.out.println(ryan);
+
+//  =========================================   Understanding references  ==============================================
+//        The following code blocks make use of the Person class from the previous exercise. For each code block, think about what the code will output, then copy the code into intellij and run it to see if it matches your expectation.
+//
+//        Person person1 = new Person("John");
+//        Person person2 = new Person("John");
+//        System.out.println(person1.getName().equals(person2.getName())); //true
+//        System.out.println(person1 == person2); // false
+//
+//        Person person1 = new Person("John");
+//        Person person2 = person1;
+//        System.out.println(person1 == person2); // true
+//
+//        Person person1 = new Person("John");
+//        Person person2 = person1;
+//        System.out.println(person1.getName());
+//        System.out.println(person2.getName());
+//        person2.setName("Jane");
+//        System.out.println(person1.getName());
+//        System.out.println(person2.getName()); // John John Jane Jane
+
     }
 }
-
