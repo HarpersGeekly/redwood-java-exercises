@@ -1,4 +1,6 @@
 package DiceRolling;
+import Validator.Validator;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -8,17 +10,18 @@ import java.util.Scanner;
 
 //something this small and procedural doesn't need a Dice Class.
 // But we will make one in DiceRolling.Die.java to be used in DiceRolling.DiceRollingApp.java
-
 public class DiceRoll {
     public static void main(String[] args){
-        System.out.println("Welcome to the DiceRolling.Die Rolling App!");
+
+        System.out.println("Welcome to the Dice Rolling App!");
         playGame();
     }
 
-//======================================================================================================================
+    //======================================================================================================================
     private static void playGame() {
         Scanner scan = new Scanner(System.in);
-        String playAgain;
+        Validator validator = new Validator(scan);
+//        String playAgain; No need with new yesNo() method being called on validator.
 
         do {
             System.out.println("Enter the number of sides on your two dice");
@@ -31,10 +34,10 @@ public class DiceRoll {
             System.out.println("You rolled " + dieOne + " and " + dieTwo + ".");
             System.out.println("Together, your total is " + (dieOne + dieTwo));
             System.out.println("Want to roll the dice again? Y/N");
-            playAgain = scan.next();
+//            playAgain = scan.next();
             scan.nextLine();
 
-        } while (playAgain.trim().equalsIgnoreCase("yes") || playAgain.trim().equalsIgnoreCase("y"));
+        } while (validator.yesNo());
         System.out.println("See ya later");
     }
 

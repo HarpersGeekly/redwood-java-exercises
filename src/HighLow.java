@@ -11,7 +11,6 @@ public class HighLow {
         Validator validator = new Validator(scan);
 
         System.out.println("Welcome to the High Low Guessing Game.");
-        String userWantsToContinue;
 
         do {
 
@@ -22,12 +21,10 @@ public class HighLow {
             System.out.println(randomNumber); //cheater.
             System.out.println("Guess a number between 1 and 100:");
             compareUserGuess(validator, 1, 100, randomNumber, counter, prompt);
-            scan.nextLine();
 
             System.out.println("Would you like to play again? Y/N");
-            userWantsToContinue = scan.nextLine();
 
-        } while (userWantsToContinue.trim().equalsIgnoreCase("Yes") || (userWantsToContinue.trim().equalsIgnoreCase("y")));
+        } while (validator.yesNo());
         System.out.println("Thanks for playing! Bye.");
     }
 // =====================================================================================================================
