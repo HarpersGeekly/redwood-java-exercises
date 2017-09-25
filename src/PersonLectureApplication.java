@@ -1,17 +1,20 @@
 /**
  * Created by RyanHarper on 9/25/17.
  */
-public class PersonApplication {
+public class PersonLectureApplication {
     public static void main(String[] args) {
 
-        Person person = new Person("Ryan", "Harper"); // new Person() is a default constructor for every class definition you create.
+        PersonLecture person = new PersonLecture("Ryan", "Harper"); // "new Person()" is a default constructor for every class definition you create.
+        PersonLecture zach = new PersonLecture("Zach", "Guilde");
 
 //        person.firstName = "Ryan"; If the Person class has private variables, these two aren't valid anymore.
 //        person.lastName = "Harper";
 
-        System.out.println(Person.population);
-        Person zach = new Person("Zach", "Guilde");
-        System.out.println(Person.population);
+        System.out.println(PersonLecture.population);
+        System.out.println(person);
+        System.out.println(zach);
+        System.out.println(person.fullName());
+        System.out.println(zach.fullName());
 
         // API = Application Programming Interface
         // REST API - Remote Program
