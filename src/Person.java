@@ -11,10 +11,23 @@
 // Scanner and System are the server (service to help me do something)... and I'm the client
     //
 
-
     // how do you want the client to use this class?
 public class Person {
-    public String firstName;
-    public String lastName;
+
+// (block scope in Java. These variables are available within the Person code block.)
+    private String firstName;
+    private String lastName;
+
+    //constructor method:
+    public /* no return type */ Person /* the same as the class */(String aFirstName, String aLastName) {
+        firstName = aFirstName;
+        lastName = aLastName; // using ".this" like this.lastName = lastName, knows that its's the lastName from the Person class.
+        // But some Java developers will declare aFirstName, aLastName to mitigate .this
+        // ".this" should only be used when the parameters are the same as the class variables.
+    }
+
+    public String fullName() {
+        return firstName + " " + lastName;
+    }
 }
 
