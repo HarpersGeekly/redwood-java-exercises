@@ -2,7 +2,7 @@
  * Created by RyanHarper on 9/25/17.
  */
     // public = anyone has access to this class/attribute/function
-    // private = no-one can see this class/attribute/function. Kinda like in the in the real world.
+    // private = no-one can see this class/attribute/function. Kinda like in the real world.
     // should the user be able to change it? What can the user use out of this object?
     // We start thinking about a client and a server. The client is an object that calls a method on another object.
 // and the server is an object that does an operation on behalf of another object. We've been doing this already:
@@ -13,17 +13,18 @@
 
     // how do you want the client to use this class?
 public class Person {
-
-// (block scope in Java. These variables are available within the Person code block.)
-    private String firstName;
+// (Remember, we use block scope in Java. These variables are available within the Person code block.)
+    private String firstName; // local variable.
     private String lastName;
+    public static int population = 0; //shared
 
-    //constructor method:
-    public /* no return type */ Person /* the same as the class */(String aFirstName, String aLastName) {
-        firstName = aFirstName;
-        lastName = aLastName; // using ".this" like this.lastName = lastName, knows that its's the lastName from the Person class.
-        // But some Java developers will declare aFirstName, aLastName to mitigate .this
-        // ".this" should only be used when the parameters are the same as the class variables.
+    //constructor method showing use of both a ".this" or an "aSomething"
+    public /* no return type */ Person /* the same as the class name */(String firstName, String aLastName) {
+        this.firstName = firstName;
+        lastName = aLastName; // using ".this", this.firstName = firstName, makes it so the constructor knows that it's the firstName from the Person class.
+        // But some Java developers will declare aFirstName, aLastName to mitigate using ".this"
+        // ".this" should only be used when the parameters are the same as the class variables, as seen above
+        population++;
     }
 
     public String fullName() {

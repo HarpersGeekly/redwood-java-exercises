@@ -11,6 +11,7 @@ public class Student {
 
     public Student(String name, String cohort) { // constructor overloading. the name is same, parameters are different
         this.name = name;
+//        this(name); // this is calling the constructor with one argument
         this.cohort = cohort;
     }
 
