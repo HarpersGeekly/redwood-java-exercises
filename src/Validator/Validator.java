@@ -12,31 +12,8 @@ public class Validator {
         this.scan = scan;
     }
 
-//    String stringInput;
-//    int intInput;
-//    double doubleInput;
-
-//    public Validator.Validator(String stringInput, int intInput, double doubleInput) {
-//        this.stringInput = stringInput;
-//        this.intInput = intInput;
-//        this.doubleInput = doubleInput;
-//    }
-
-    public String getString(String prompt) {
-        System.out.println(prompt);
-        String stringInput;
-
-        try {
-            stringInput = scan.nextLine();
-        } catch (IllegalArgumentException e ) {
-            System.out.println("ERROR -- Input must be valid");
-            scan.next();
-            return getString(prompt);
-        }
-        return stringInput;
-    }
-
     public int getInt(String prompt) {
+
         System.out.println(prompt);
         int intInput;
 
@@ -52,6 +29,7 @@ public class Validator {
     }
 
     public int getIntWithinRange(String prompt, int min, int max) {
+
         int intInput = getInt(prompt);
 
         try {
@@ -67,6 +45,7 @@ public class Validator {
     }
 
     public double getDouble(String prompt) {
+
         System.out.println(prompt);
         double doubleInput;
 
@@ -82,11 +61,10 @@ public class Validator {
     }
 
     public double getDoubleWithinRange(String prompt, double min, double max) {
-        double doubleInput = getDouble(prompt);
 
         try {
-            System.out.println(prompt);
-            doubleInput = scan.nextDouble();
+            double doubleInput = getDouble(prompt);
+
             if (doubleInput < min || doubleInput > max) {
                 throw new IllegalArgumentException("ERROR -- Integer is out of range between " + min + " and " + max);
             }
@@ -94,21 +72,15 @@ public class Validator {
         } catch (InputMismatchException e) {
             System.out.println("ERROR -- Input must be an integer.");
             scan.nextLine();
-            getDoubleWithinRange(prompt, min, max);
+            return getDoubleWithinRange(prompt, min, max);
         } catch (IllegalStateException | IllegalArgumentException e) { //listening for either of these exceptions.
             System.out.println(e.getMessage());
-//            if (intInput < min) {
-//                System.out.println("ERROR -- Number must be greater than " + min);
-//            } else if (intInput > max) {
-//                System.out.println("ERROR -- Number must be less than " + max);
-//            }
             return getDoubleWithinRange(prompt, min, max);
         }
-        scan.nextLine();
-        return doubleInput;
     }
 
     public void setTimeout(int milliseconds) {
+
         try {
             Thread.sleep(milliseconds);
         } catch (InterruptedException e) {
@@ -116,11 +88,27 @@ public class Validator {
         }
     }
 
-//        boolean yesNo()
-//        The yesNo method should return true if the user enters y, yes, or variants thereof, and false otherwise.
     public boolean yesNo() {
+
         String userWantsToContinue = scan.nextLine();
         return userWantsToContinue.trim().equalsIgnoreCase("Y") || userWantsToContinue.trim().equalsIgnoreCase("Yes");
     }
 
 }
+
+// ========== getString() isn't worth it to have in a validator  =======================================================
+
+//    public String getString(String prompt) {
+//
+//        System.out.println(prompt);
+//        String stringInput;
+//
+//        try {
+//            stringInput = scan.nextLine();
+//        } catch (IllegalArgumentException e ) {
+//            System.out.println("ERROR -- Input must be valid");
+//            scan.next();
+//            return getString(prompt);
+//        }
+//        return stringInput;
+//    }
