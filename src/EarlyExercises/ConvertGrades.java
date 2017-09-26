@@ -1,4 +1,4 @@
-package BeforeValidator;
+package EarlyExercises;
 
 import java.util.Scanner;
 
