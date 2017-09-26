@@ -1,17 +1,11 @@
 package Validator;
-
-import Validator.Validator;
-
-import java.util.Scanner;
-
 /**
  * Created by RyanHarper on 1/10/17.
  */
 public class ValidatorTestApp {
     public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
 
-        Validator validator = new Validator(scan);
+        Validator validator = new Validator();
 
         System.out.println("Welcome to the Validator Test App");
 

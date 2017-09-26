@@ -6,10 +6,15 @@ import java.util.Scanner;
  * Created by RyanHarper on 1/10/17.
  */
 public class Validator {
+
     private Scanner scan;
 
-    public Validator(Scanner scan) {
-        this.scan = scan;
+//    public Validator(Scanner scan) {
+//        this.scan = scan;
+//    }
+
+    public Validator() {
+        this.scan = new Scanner(System.in);
     }
 
     public int getInt(String prompt) {

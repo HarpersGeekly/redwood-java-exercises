@@ -1,14 +1,11 @@
 import Validator.Validator;
-
-import java.util.Scanner;
-
 /**
  * Created by RyanHarper on 9/22/17.
  */
 public class HighLow {
     public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
-        Validator validator = new Validator(scan);
+
+        Validator validator = new Validator();
 
         System.out.println("Welcome to the High Low Guessing Game.");
 
@@ -18,7 +15,7 @@ public class HighLow {
             String prompt = "";
             int randomNumber = generateRandomNumber(1, 100);
 
-            System.out.println(randomNumber); //cheater.
+            System.out.println(randomNumber); //TESTING
             System.out.println("Guess a number between 1 and 100:");
             compareUserGuess(validator, 1, 100, randomNumber, counter, prompt);
 

@@ -1,18 +1,12 @@
 package Shapes;
-
-
 import Validator.Validator;
-
-import java.util.Scanner;
-
 /**
  * Created by RyanHarper on 9/25/17.
  */
 public class CircleApp {
     public static void main(String[] args) {
 
-        Scanner scan = new Scanner(System.in);
-        Validator validator = new Validator(scan);
+        Validator validator = new Validator();
 
         do {
 

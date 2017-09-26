@@ -1,9 +1,5 @@
 package DiceRolling;
 import Validator.Validator;
-
-import java.util.InputMismatchException;
-import java.util.Scanner;
-
 /**
  * Created by RyanHarper on 1/5/17.
  */
@@ -19,13 +15,12 @@ public class DiceRoll {
 
     //======================================================================================================================
     private static void playGame() {
-        Scanner scan = new Scanner(System.in);
-        Validator validator = new Validator(scan);
+        Validator validator = new Validator();
 //        String playAgain; No need with new yesNo() method being called on validator.
 
         do {
-            System.out.println("Enter the number of sides on your two dice");
-            int numberOfSidesPerDie = getNumberOfSidesFromUser(scan);
+//        Ask the user to enter the number of sides for a pair of dice.
+            int numberOfSidesPerDie = validator.getInt("Enter the number of sides on your two dice:");
 
 //        “Roll” two n-sided dice, display the results of each, and then ask the user if he/she wants to roll the dice again.
             System.out.println("Rolling the two " + numberOfSidesPerDie + "-sided dice...");
@@ -34,28 +29,10 @@ public class DiceRoll {
             System.out.println("You rolled " + dieOne + " and " + dieTwo + ".");
             System.out.println("Together, your total is " + (dieOne + dieTwo));
             System.out.println("Want to roll the dice again? Y/N");
-//            playAgain = scan.next();
-            scan.nextLine();
 
         } while (validator.yesNo());
         System.out.println("See ya later");
     }
-
-//        Ask the user to enter the number of sides for a pair of dice.
-    private static int getNumberOfSidesFromUser(Scanner scan) {
-        int userInteger;
-
-        try {
-            userInteger = scan.nextInt();
-        } catch (InputMismatchException e) {
-            System.out.println("Your input must be an integer. Please type in a valid number.");
-            // Keeps the scanner from "skipping" the next input
-            scan.nextLine();
-            return getNumberOfSidesFromUser(scan);
-        }
-        return userInteger;
-    }
-
     //        Random number generator:
     private static int rollDie(int userInteger) {
         return (int) Math.ceil(Math.random() * userInteger);
