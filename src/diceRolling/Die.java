@@ -1,4 +1,4 @@
-package DiceRolling;
+package diceRolling;
 
 /**
  * Created by RyanHarper on 1/9/17.

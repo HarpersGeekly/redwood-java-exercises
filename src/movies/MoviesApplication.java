@@ -1,5 +1,5 @@
-package Movies;
-import Validator.Validator;
+package movies;
+import validator.Validator;
 /**
  * Created by RyanHarper on 9/26/17.
  */
@@ -12,7 +12,7 @@ public class MoviesApplication {
             System.out.println("===========================");
             System.out.println("What would you like to do? ");
             System.out.println("===========================");
-            System.out.println("[1] View All Movies");
+            System.out.println("[1] View All movies");
             System.out.println("[2] View Animated movies");
             System.out.println("[3] View Musical movies");
             System.out.println("[4] View Comedy movies");

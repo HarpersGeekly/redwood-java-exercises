@@ -1,4 +1,4 @@
-import Validator.Validator;
+import validator.Validator;
 /**
  * Created by RyanHarper on 9/22/17.
  */

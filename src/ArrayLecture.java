@@ -1,4 +1,4 @@
-import Validator.Validator;
+import validator.Validator;
 
 import java.util.Arrays;
 

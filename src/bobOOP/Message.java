@@ -1,4 +1,4 @@
-package BobOOP;
+package bobOOP;
 
 /**
  * Created by RyanHarper on 9/25/17.

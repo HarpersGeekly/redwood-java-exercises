@@ -1,11 +1,11 @@
-package DiceRolling;
-import Validator.Validator;
+package diceRolling;
+import validator.Validator;
 /**
  * Created by RyanHarper on 1/5/17.
  */
 
 //something this small and procedural doesn't need a Dice Class.
-// But we will make one in DiceRolling.Die.java to be used in DiceRolling.DiceRollingApp.java
+// But we will make one in diceRolling.Die.java to be used in diceRolling.DiceRollingApp.java
 public class DiceRoll {
     public static void main(String[] args){
 

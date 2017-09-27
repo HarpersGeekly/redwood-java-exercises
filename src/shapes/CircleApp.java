@@ -1,5 +1,5 @@
-package Shapes;
-import Validator.Validator;
+package shapes;
+import validator.Validator;
 /**
  * Created by RyanHarper on 9/25/17.
  */

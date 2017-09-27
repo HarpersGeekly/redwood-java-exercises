@@ -1,4 +1,4 @@
-package EarlyExercises;
+package earlyExercises;
 
 import java.util.Scanner;
 

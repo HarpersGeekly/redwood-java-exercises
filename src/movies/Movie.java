@@ -1,4 +1,4 @@
-package Movies;
+package movies;
 /**
  * Created by RyanHarper on 9/26/17.
  */

@@ -1,4 +1,4 @@
-package BobOOP;
+package bobOOP;
 
 import java.util.Scanner;
 

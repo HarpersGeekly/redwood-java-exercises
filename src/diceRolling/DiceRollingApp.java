@@ -1,4 +1,4 @@
-package DiceRolling;
+package diceRolling;
 
 import java.util.Scanner;
 

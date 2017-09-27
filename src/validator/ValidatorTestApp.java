@@ -1,4 +1,4 @@
-package Validator;
+package validator;
 /**
  * Created by RyanHarper on 1/10/17.
  */
@@ -7,7 +7,7 @@ public class ValidatorTestApp {
 
         Validator validator = new Validator();
 
-        System.out.println("Welcome to the Validator Test App");
+        System.out.println("Welcome to the validator Test App");
 
         do {
             validateAgain(validator);

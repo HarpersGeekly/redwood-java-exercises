@@ -1,4 +1,4 @@
-package Validator;
+package validator;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -9,7 +9,7 @@ public class Validator {
 
     private Scanner scan;
 
-//    public Validator(Scanner scan) {
+//    public validator(Scanner scan) {
 //        this.scan = scan;
 //    }
 
