@@ -99,21 +99,22 @@ public class Validator {
         return userWantsToContinue.trim().equalsIgnoreCase("Y") || userWantsToContinue.trim().equalsIgnoreCase("Yes");
     }
 
-}
+
 
 // ========== getString() isn't worth it to have in a validator  =======================================================
 
-//    public String getString(String prompt) {
-//
-//        System.out.println(prompt);
-//        String stringInput;
-//
-//        try {
-//            stringInput = scan.nextLine();
-//        } catch (IllegalArgumentException e ) {
-//            System.out.println("ERROR -- Input must be valid");
-//            scan.next();
-//            return getString(prompt);
-//        }
-//        return stringInput;
-//    }
+    public String getString(String prompt) {
+
+        System.out.println(prompt);
+        String stringInput;
+
+        try {
+            stringInput = scan.nextLine();
+        } catch (IllegalArgumentException e ) {
+            System.out.println("ERROR -- Input must be valid");
+            scan.next();
+            return getString(prompt);
+        }
+        return stringInput;
+    }
+}
