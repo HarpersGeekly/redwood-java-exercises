@@ -15,7 +15,7 @@ public class HighLow {
             String prompt = "";
             int randomNumber = generateRandomNumber(1, 100);
 
-            System.out.println(randomNumber); //TESTING
+//            System.out.println(randomNumber); //TESTING
             System.out.println("Guess a number between 1 and 100:");
             compareUserGuess(validator, 1, 100, randomNumber, counter, prompt);
 
