@@ -1,5 +1,7 @@
 package bobOOP;
 
+import validator.Validator;
+
 import java.util.Scanner;
 
 /**
@@ -7,8 +9,9 @@ import java.util.Scanner;
  */
 public class BobRefactoredAPP {
     public static void main(String[] args) {
+        Validator validator = new Validator();
 
-        while (true) {
+        do {
             // input
             Scanner input = new Scanner(System.in);
             System.out.println("Ask anything");
@@ -20,11 +23,10 @@ public class BobRefactoredAPP {
 
             // output
             System.out.println("Continue? y,n");
-            String option = input.nextLine();
-            if (!option.equalsIgnoreCase("y")) {
-                break;
-            }
-        }
+
+        } while (validator.yesNo());
+            System.out.println("This was a boring conversation anyway..");
+
     }
 
 }
