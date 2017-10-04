@@ -33,8 +33,7 @@ public class ServerNameGenerator {
 
         do {
             System.out.println(generateRandomName());
-            System.out.println("Keep Generating? Y/N");
-        } while(validator.yesNo());
+        } while(validator.yesNo("Keep Generating? Y/N"));
         System.out.println("goodbye.");
     }
 }

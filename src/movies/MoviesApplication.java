@@ -24,7 +24,7 @@ public class MoviesApplication {
             int userChoice = validator.getIntWithinRange("Enter your choice: ", 1, 7);
             getGenreFromUser(userChoice);
 
-        } while (validator.yesNo());
+        } while (validator.yesNo("Would you like to see a new list? Yes/No"));
         System.out.println("Goodbye.");
     }
 
@@ -89,7 +89,7 @@ public class MoviesApplication {
 //        }
 
         System.out.println("==========================================" + "\n");
-        System.out.println("Would you like to see a new list? Yes/No");
+//        System.out.println();
     }
 }
 

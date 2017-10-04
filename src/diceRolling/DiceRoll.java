@@ -28,9 +28,8 @@ public class DiceRoll {
             int dieTwo = rollDie(numberOfSidesPerDie);
             System.out.println("You rolled " + dieOne + " and " + dieTwo + ".");
             System.out.println("Together, your total is " + (dieOne + dieTwo));
-            System.out.println("Want to roll the dice again? Y/N");
 
-        } while (validator.yesNo());
+        } while (validator.yesNo("Want to roll the dice again? Y/N"));
         System.out.println("See ya later");
     }
     //        Random number generator:

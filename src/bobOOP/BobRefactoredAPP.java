@@ -22,9 +22,8 @@ public class BobRefactoredAPP {
             System.out.println(bob.respondTo(new Message(msg)));
 
             // output
-            System.out.println("Continue? y,n");
 
-        } while (validator.yesNo());
+        } while (validator.yesNo("Continue? y,n"));
             System.out.println("This was a boring conversation anyway..");
 
     }

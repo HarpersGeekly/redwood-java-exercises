@@ -59,8 +59,7 @@ public class GradesApplication {
                 System.out.println("Sorry, no username with name " + userSelect + " exists.");
             }
 
-            System.out.println("Enter another student? Y/N");
-        } while (validator.yesNo());
+        } while (validator.yesNo("Enter another student? Y/N"));
         System.out.println("Goodbye.");
 
     } // END OF MAIN METHOD ============================================================================================

@@ -19,9 +19,7 @@ public class HighLow {
             System.out.println("Guess a number between 1 and 100:");
             compareUserGuess(validator, 1, 100, randomNumber, counter, prompt);
 
-            System.out.println("Would you like to play again? Y/N");
-
-        } while (validator.yesNo());
+        } while (validator.yesNo("Would you like to play again? Y/N"));
         System.out.println("Thanks for playing! Bye.");
     }
 // =====================================================================================================================

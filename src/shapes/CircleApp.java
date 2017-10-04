@@ -18,12 +18,11 @@ public class CircleApp {
             System.out.println("The circumference of your circle is " + circle.getFormattedCircumference());
             System.out.println("Number of circles made = " + circle.numberOfCirclesMade);
 
-            System.out.println("Would you like to make another circle? Y/N");
-
-        } while (validator.yesNo());
+        } while (validator.yesNo("Would you like to make another circle? Y/N"));
         System.out.println("Goodbye.");
 
-
+    }
+}
 
 
 
@@ -47,16 +46,3 @@ public class CircleApp {
 //        Before exiting, the program should output the total number of circles created. Use a private static property, along with a public static method to keep track of and display the total number of circles created.
 
 
-
-
-
-
-
-
-
-
-
-
-
-    }
-}
