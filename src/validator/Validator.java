@@ -20,17 +20,15 @@ public class Validator {
     public int getInt(String prompt) {
 
         System.out.println(prompt);
-        int intInput;
+        String intInput;
+        intInput = scan.nextLine();
 
         try {
-            intInput = scan.nextInt();
-        } catch (InputMismatchException e) {
+            return Integer.valueOf(intInput);
+        } catch (NumberFormatException e) {
             System.out.println("ERROR -- Input must be an integer");
-            scan.next();
             return getInt(prompt);
         }
-        scan.nextLine();
-        return intInput;
     }
 
     public int getIntWithinRange(String prompt, int min, int max) {
@@ -43,7 +41,6 @@ public class Validator {
             }
         } catch (IllegalStateException | IllegalArgumentException e) { //listening for either of these exceptions.
             System.out.println(e.getMessage());
-
             return getIntWithinRange(prompt, min, max);
         }
         return intInput;
@@ -52,17 +49,14 @@ public class Validator {
     public double getDouble(String prompt) {
 
         System.out.println(prompt);
-        double doubleInput;
-
+        String doubleInput;
         try {
-            doubleInput = scan.nextDouble();
-        } catch (InputMismatchException e) {
+            doubleInput = scan.nextLine();
+            return Double.valueOf(doubleInput);
+        } catch (IllegalArgumentException e) {
             System.out.println("ERROR -- Input must be an integer");
-            scan.next();
             return getDouble(prompt);
         }
-        scan.nextLine();
-        return doubleInput;
     }
 
     public double getDoubleWithinRange(String prompt, double min, double max) {
@@ -93,13 +87,21 @@ public class Validator {
         }
     }
 
-    public boolean yesNo() {
+    public boolean yesNo(){
+        String userWantsToContinue;
 
-        String userWantsToContinue = scan.nextLine();
+        try {
+            userWantsToContinue = scan.nextLine();
+            if (!userWantsToContinue.toLowerCase().startsWith("y") && !userWantsToContinue.toLowerCase().startsWith("n")){
+                throw new IllegalArgumentException();
+            }
+        } catch (IllegalArgumentException e ) {
+            System.out.println("ERROR -- Input must be a Y/Yes or N/No");
+            return yesNo();
+        }
+
         return userWantsToContinue.trim().equalsIgnoreCase("Y") || userWantsToContinue.trim().equalsIgnoreCase("Yes");
     }
-
-
 
 // ========== getString() isn't worth it to have in a validator  =======================================================
 
