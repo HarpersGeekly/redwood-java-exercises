@@ -12,9 +12,7 @@ public class ValidatorTestApp {
         do {
             validateAgain(validator);
 
-            System.out.println("Do you want to validate again? Type 'yes' or 'no'");
-
-        } while (validator.yesNo());
+        } while (validator.yesNo("Do you want to validate again? Type 'yes' or 'no'"));
         System.out.println("Goodbye.");
     }
 

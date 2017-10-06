@@ -1,6 +1,8 @@
 package validator;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by RyanHarper on 1/10/17.
@@ -59,6 +61,7 @@ public class Validator {
         }
     }
 
+
     public double getDoubleWithinRange(String prompt, double min, double max) {
 
         try {
@@ -87,9 +90,9 @@ public class Validator {
         }
     }
 
-    public boolean yesNo(){
+    public boolean yesNo(String prompt){
         String userWantsToContinue;
-
+        System.out.println(prompt);
         try {
             userWantsToContinue = scan.nextLine();
             if (!userWantsToContinue.toLowerCase().startsWith("y") && !userWantsToContinue.toLowerCase().startsWith("n")){
@@ -97,7 +100,7 @@ public class Validator {
             }
         } catch (IllegalArgumentException e ) {
             System.out.println("ERROR -- Input must be a Y/Yes or N/No");
-            return yesNo();
+            return yesNo(prompt);
         }
 
         return userWantsToContinue.trim().equalsIgnoreCase("Y") || userWantsToContinue.trim().equalsIgnoreCase("Yes");
@@ -118,5 +121,33 @@ public class Validator {
             return getString(prompt);
         }
         return stringInput;
+    }
+
+
+    public String getPhoneNumber(String prompt){
+        System.out.println(prompt);
+        String userInput = scan.nextLine();
+        Pattern pattern = Pattern.compile("^\\(?([2-9][0-8][0-9])\\)?[-.●]?([2-9][0-9]{2})[-.●]?([0-9]{4})$");
+//                "^(?:(?:\\\\+?1\\\\s*(?:[.-]\\\\s*)?)?(?:\\\\(\\\\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9])\\\\s*\\\\)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\\\\s*(?:[.-]\\\\s*)?)?([2-9]1[02-9]|[2-9][02-9]1|[2-9][02-9]{2})\\\\s*(?:[.-]\\\\s*)?([0-9]{4})(?:\\\\s*(?:#|x\\\\.?|ext\\\\.?|extension)\\\\s*(\\\\d+))?$");
+        Matcher match = pattern.matcher(userInput);
+        if(match.matches()){
+            return userInput;
+        } else{
+            System.out.println("Invalid Input Format:(xxx)xxx-xxxx");
+            return getPhoneNumber(prompt);
+        }
+    }
+
+    public String getSongLength(String prompt) {
+        System.out.println(prompt);
+        String userInput = scan.nextLine();
+        Pattern pattern = Pattern.compile("^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$");
+        Matcher match = pattern.matcher(userInput);
+        if(match.matches()){
+            return userInput;
+        } else{
+            System.out.println("Invalid format 00:00");
+            return getSongLength(prompt);
+        }
     }
 }
