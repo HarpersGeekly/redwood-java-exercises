@@ -1,3 +1,5 @@
+package inheritance;
+
 /**
  * Created by RyanHarper on 9/28/17.
  */

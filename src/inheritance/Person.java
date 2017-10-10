@@ -1,11 +1,11 @@
-
+package inheritance;
 
 /**
  * Created by RyanHarper on 9/25/17.
  */
 //    =========================================   Object basics ========================================================
 
-//    Create Person class inside of src that has a private name property that is a string.
+//    Create inheritance.Person class inside of src that has a private name property that is a string.
 public class Person {
 
     private String name;
@@ -35,8 +35,8 @@ public class Person {
         System.out.println("Hello, " + name + ", nice to see you!");
     }
 
-//        Create a main method on the class that creates a new Person object and tests the above methods.
-//  ========================================== Person's Main Method ====================================================
+//        Create a main method on the class that creates a new inheritance.Person object and tests the above methods.
+//  ========================================== inheritance.Person's Main Method ====================================================
 
     public static void main(String[] args) {
 
@@ -53,19 +53,19 @@ public class Person {
         System.out.println(ryan);
 
 //  =========================================   Understanding references  ==============================================
-//        The following code blocks make use of the Person class from the previous exercise. For each code block, think about what the code will output, then copy the code into intellij and run it to see if it matches your expectation.
+//        The following code blocks make use of the inheritance.Person class from the previous exercise. For each code block, think about what the code will output, then copy the code into intellij and run it to see if it matches your expectation.
 //
-//        Person person1 = new Person("John");
-//        Person person2 = new Person("John");
+//        inheritance.Person person1 = new inheritance.Person("John");
+//        inheritance.Person person2 = new inheritance.Person("John");
 //        System.out.println(person1.getName().equals(person2.getName())); //true
 //        System.out.println(person1 == person2); // false
 //
-//        Person person1 = new Person("John");
-//        Person person2 = person1;
+//        inheritance.Person person1 = new inheritance.Person("John");
+//        inheritance.Person person2 = person1;
 //        System.out.println(person1 == person2); // true
 //
-//        Person person1 = new Person("John");
-//        Person person2 = person1;
+//        inheritance.Person person1 = new inheritance.Person("John");
+//        inheritance.Person person2 = person1;
 
 //        System.out.println(person1.getName());
 //        System.out.println(person2.getName());
