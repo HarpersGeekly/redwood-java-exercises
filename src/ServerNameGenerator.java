@@ -11,7 +11,7 @@ public class ServerNameGenerator {
                     {"short", "tall", "old", "young", "important", "fast", "slow", "big", "dumb", "wise"};
 
     private static String[] nouns = new String[]
-                {"Bus", "Airplane", "Train", "Tree", "Animal", "Person", "London", "Lightning", "Apple", "Banana"};
+                {"Bus", "Airplane", "Train", "Tree", "Animal", "inheritance.Person", "London", "Lightning", "Apple", "Banana"};
 
 //        Create a method that will return a random element from an array of strings.
 
