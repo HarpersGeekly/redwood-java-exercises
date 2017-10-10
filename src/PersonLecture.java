@@ -13,7 +13,7 @@
 
     // how do you want the client to use this class?
 public class PersonLecture {
-// (Remember, we use block scope in Java. These variables are available within the Person code block.)
+// (Remember, we use block scope in Java. These variables are available within the inheritance.Person code block.)
     private String firstName; // local variable.
     private String lastName;
     public static int population = 0; //shared
@@ -21,7 +21,7 @@ public class PersonLecture {
     //constructor method showing use of both a ".this" or an "aSomething"
     public /* no return type */ PersonLecture /* the same as the class name */(String firstName, String aLastName) {
         this.firstName = firstName;
-        lastName = aLastName; // using ".this", this.firstName = firstName, makes it so the constructor knows that it's the firstName from the Person class.
+        lastName = aLastName; // using ".this", this.firstName = firstName, makes it so the constructor knows that it's the firstName from the inheritance.Person class.
         // But some Java developers will declare aFirstName, aLastName to mitigate using ".this"
         // ".this" should only be used when the parameters are the same as the class variables, as seen above
         population++;

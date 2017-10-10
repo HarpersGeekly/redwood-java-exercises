@@ -4,10 +4,10 @@
 public class PersonLectureApplication {
     public static void main(String[] args) {
 
-        PersonLecture person = new PersonLecture("Ryan", "Harper"); // "new Person()" is a default constructor for every class definition you create.
+        PersonLecture person = new PersonLecture("Ryan", "Harper"); // "new inheritance.Person()" is a default constructor for every class definition you create.
         PersonLecture zach = new PersonLecture("Zach", "Guilde");
 
-//        person.firstName = "Ryan"; If the Person class has private variables, these two aren't valid anymore.
+//        person.firstName = "Ryan"; If the inheritance.Person class has private variables, these two aren't valid anymore.
 //        person.lastName = "Harper";
 
         System.out.println(PersonLecture.population);

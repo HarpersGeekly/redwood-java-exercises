@@ -1,3 +1,4 @@
+import inheritance.Person;
 import validator.Validator;
 
 import java.util.Arrays;
