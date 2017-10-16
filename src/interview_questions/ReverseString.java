@@ -12,21 +12,18 @@ public class ReverseString {
 
         Validator validator = new Validator();
         String sentence = validator.getString("Enter a sentence:");
-        String[] stringArray = sentence.split(" ");
 
+        String[] stringArray = sentence.split(" ");
         for(int i = 0; i<stringArray.length; i++){
-            String flipped = new StringBuilder(stringArray[i]).reverse().toString();
-            System.out.print(flipped+" ");
+            String reverseInPlace = new StringBuilder(stringArray[i]).reverse().toString();
+            System.out.print(reverseInPlace + " ");
         }
+
+// TO FLIP THE ENTIRE SENTENCE:
+        System.out.println("\n===== To flip the entire sentence =====");
+        String reverseSentence = new StringBuilder(sentence).reverse().toString();
+        System.out.print(reverseSentence +" ");
+
     }
 }
-// TO FLIP THE ENTIRE SENTENCE:
-//    Validator validator = new Validator();
-//
-//    String sentence = validator.getString("Enter a sentence:");
 
-//    String temp = new StringBuilder(sentence).reverse().toString();
-//            System.out.print(temp+" ");
-//
-//            }
-//    }
