@@ -1,4 +1,4 @@
-package earlyExercises;
+package interview_questions;
 
 import java.util.Scanner;
 
