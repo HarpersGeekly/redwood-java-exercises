@@ -64,11 +64,13 @@ public class ContactsTestApp {
 
     private static void addNewContact(List<String> contacts, Validator validator) {
 
-        String contactName = validator.getString("Add Contact Name:");
-        String contactPhoneNumber = validator.getPhoneNumber("Add Phone Number for Contact(xxx)xxx-xxxx:");
+        do {
+            String contactName = validator.getString("Add Contact Name:");
+            String contactPhoneNumber = validator.getPhoneNumber("Add Phone Number for Contact(xxx)xxx-xxxx:");
 
-        contacts.add(contactName + " | " + contactPhoneNumber.replaceFirst("(\\d{3})(\\d{3})(\\d{4})", "($1) $2-$3"));
-        System.out.println(contactName + " | " + contactPhoneNumber.replaceFirst("(\\d{3})(\\d{3})(\\d{4})", "($1) $2-$3"));
+            contacts.add(contactName + " | " + contactPhoneNumber.replaceFirst("(\\d{3})(\\d{3})(\\d{4})", "($1) $2-$3"));
+            System.out.println(contactName + " | " + contactPhoneNumber.replaceFirst("(\\d{3})(\\d{3})(\\d{4})", "($1) $2-$3"));
+        } while (validator.yesNo("Add another contact? Y/N"));
     }
 
     private static void searchByName(List<String> contacts, Validator validator) {
