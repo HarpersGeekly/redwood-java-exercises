@@ -1,4 +1,4 @@
-/**
+package Java101; /**
  * Created by RyanHarper on 9/18/17.
  */
 import java.util.Scanner;
