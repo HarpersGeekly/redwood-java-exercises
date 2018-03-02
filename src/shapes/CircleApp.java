@@ -17,7 +17,7 @@ public class CircleApp {
             System.out.println("area2: " + circle.getAreaWithoutFormat(radius));
             System.out.println("The area of your circle formatted is " + circle.getFormattedArea());
             System.out.println("The circumference of your circle is " + circle.getFormattedCircumference());
-            System.out.println("Number of circles made = " + circle.numberOfCirclesMade);
+            System.out.println("Number of circles made = " + Circle.numberOfCirclesMade);
 
         } while (validator.yesNo("Would you like to make another circle? Y/N"));
         System.out.println("Goodbye.");
