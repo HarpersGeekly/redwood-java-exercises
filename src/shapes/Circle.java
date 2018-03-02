@@ -26,9 +26,12 @@ public class Circle {
 //        return area;
     }
 
+    public double getAreaWithoutFormat(double x) {
+        return Math.PI * (x * x);
+    }
+
     public double getCircumference() {
         return 2 * Math.PI * this.radius;
-
     }
 
     public String formatNumber(double number) {

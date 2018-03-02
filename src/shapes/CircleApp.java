@@ -14,7 +14,8 @@ public class CircleApp {
 
             Circle circle = new Circle(radius); // new instance of the Circle class. Now I can use all my stuff in Circle.
 
-            System.out.println("The area of your circle is " + circle.getFormattedArea());
+            System.out.println("area2: " + circle.getAreaWithoutFormat(radius));
+            System.out.println("The area of your circle formatted is " + circle.getFormattedArea());
             System.out.println("The circumference of your circle is " + circle.getFormattedCircumference());
             System.out.println("Number of circles made = " + circle.numberOfCirclesMade);
 
