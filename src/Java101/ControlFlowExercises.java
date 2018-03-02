@@ -148,7 +148,7 @@ public class ControlFlowExercises {
 //3. Prompt the user to enter an integer and output all the days of the week that
 //    have no more letters than the integer given.
 
-        int n = validator.getInt("Enter a number:");
+//        int n = validator.getInt("Enter a number:");
 
 
 

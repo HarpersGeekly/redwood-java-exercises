@@ -6,6 +6,8 @@ public class RestaurantDish {
     private String nameOfDish;
     private boolean wouldRecommend;
 
+    public RestaurantDish(){}
+
     public RestaurantDish(int costInCents, String nameOfDish, boolean wouldRecommend) {
         this.costInCents = costInCents;
         this.nameOfDish = nameOfDish;
