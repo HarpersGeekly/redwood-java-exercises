@@ -17,11 +17,16 @@ public class ServerNameGenerator {
 
 //        Create a method that will return a random element from an array of strings.
 
-    public static String generateRandomName() {
+    private static String generateRandomName() {
 
         int rnd1 = (int) (Math.random() * adjectives.length);
         int rnd2 = (int) (Math.random() * nouns.length);
         return adjectives[rnd1] + "-" + nouns[rnd2];
+    }
+
+    // or...
+    private static String randomNames(String[] array) {
+        return array[(int) (Math.random() * array.length)];
     }
 
 //        Add a main method, and inside of your main method select a random noun and adjective and hyphenate
@@ -35,6 +40,7 @@ public class ServerNameGenerator {
 
         do {
             System.out.println(generateRandomName());
+            System.out.println(randomNames(adjectives) + "-" + randomNames(nouns));
         } while(validator.yesNo("Keep Generating? Y/N"));
         System.out.println("goodbye.");
     }
