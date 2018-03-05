@@ -6,7 +6,7 @@ package movies;
 public class MoviesArray {
 
     public static Movie[] findAll() {
-        // power of arrays! The datatype is now an Array[] of Movie Class that returns...
+        // power of arraysAndCollections! The datatype is now an Array[] of Movie Class that returns...
         return new Movie[]{
                 // an array of new instances of the Movie object. No more movie1, movie2, movie3
                 new Movie("Citizen Kane", "drama"),

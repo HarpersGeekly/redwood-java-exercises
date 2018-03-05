@@ -1,8 +1,6 @@
-package Java101;
+package java101;
 
 import validator.Validator;
-
-import java.util.stream.IntStream;
 
 /**
  * Created by RyanHarper on 9/19/17.
@@ -11,7 +9,7 @@ public class ControlFlowExercises {
     public static void main(String[] args) {
 
         Validator validator = new Validator();
-//    For all of the following exercises, create a new class named Java101.ControlFlowExercises with a main method. After each exercise, commit your changes, then replace your code in the main method with the next exercise.
+//    For all of the following exercises, create a new class named java101.ControlFlowExercises with a main method. After each exercise, commit your changes, then replace your code in the main method with the next exercise.
 
 //        ==========================================   Loop Basics  ====================================================
 //        While:
