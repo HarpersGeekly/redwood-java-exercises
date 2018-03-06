@@ -6,8 +6,16 @@ package movies;
 //        It should have private fields for name and category, and a constructor that sets both of these.
 
 public class Movie {
+
     private String title;
     private String genre;
+    private int rating;
+
+    public Movie(String title, String genre, int rating) {
+        this.title = title;
+        this.genre = genre;
+        this.rating = rating;
+    }
 
     public Movie(String title, String genre) {
         this.title = title;
@@ -27,6 +35,23 @@ public class Movie {
     }
     public void setGenre(String genre) {
         this.genre = genre;
+    }
+
+    public int getRating() {
+        return rating;
+    }
+
+    public void setRating(int rating) {
+        this.rating = rating;
+    }
+
+    @Override
+    public String toString() {
+        return "Movie{" +
+                "TITLE: '" + title + '\'' +
+                ", GENRE: '" + genre + '\'' +
+                ", RATING: " + rating +
+                '}';
     }
 
 
