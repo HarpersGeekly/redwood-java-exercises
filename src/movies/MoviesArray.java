@@ -1,11 +1,26 @@
 package movies;
 
+import java.util.Random;
+
 /**
  * Created by RyanHarper on 9/26/17.
  */
 public class MoviesArray {
 
+    public static void addRatings(Movie[] movies) { //added later! Updating all previously known movies with a random number generator...
+        Random random = new Random();
+        for(Movie movie : movies) {
+            movie.setRating(random.nextInt(5));
+        }
+    }
+
     public static Movie[] findAll() {
+        Movie[] movies = generateMovies();
+        addRatings(movies);
+        return movies;
+    }
+
+    public static Movie[] generateMovies() {
         // power of arraysAndCollections! The datatype is now an Array[] of Movie Class that returns...
         return new Movie[]{
                 // an array of new instances of the Movie object. No more movie1, movie2, movie3
