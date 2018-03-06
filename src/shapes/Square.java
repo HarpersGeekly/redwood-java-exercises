@@ -19,13 +19,11 @@ public class Square extends Rectangle {
 //        perimeter = 4 x side
 //        area = side ^ 2
     public double getArea() {
-        System.out.println("Square.getArea:");
         return super.getWidth() * super.getLength();
 //        return this.side * this.side;
     }
 
     public double getPerimeter() {
-        System.out.println("Square.getPerimeter:");
         return super.getWidth() * 4;
 //        return this.side * 4;
     }
