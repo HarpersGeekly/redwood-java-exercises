@@ -18,11 +18,13 @@ public class Square extends Rectangle {
 // override the getArea and getPerimeter methods with the following definitions for a square:
 //        perimeter = 4 x side
 //        area = side ^ 2
+    @Override
     public double getArea() {
         return super.getWidth() * super.getLength();
 //        return this.side * this.side;
     }
 
+    @Override
     public double getPerimeter() {
         return super.getWidth() * 4;
 //        return this.side * 4;

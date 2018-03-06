@@ -17,7 +17,7 @@ public class ShapesTest {
 
         System.out.println("============== Rectangle box2 ================");
 //        create a variable of the type Rectangle named box2 and assign it a new instance of the Square class that has a side value of 5.
-        Rectangle box2 = new Square(12);
+        Rectangle box2 = new Square(5);
 //        verify that the getPerimeter and getArea methods return 20 and 25, respectively.
         System.out.println("length: " + box2.getLength() + " ft");
         System.out.println("width: " + box2.getWidth() + " ft");
@@ -28,8 +28,8 @@ public class ShapesTest {
         Rectangle box3 = new Square(9);
         System.out.println("length: " + box3.getLength() + " ft");
         System.out.println("width: " + box3.getWidth() + " ft");
-        System.out.println("Perimeter: " + box3.getPerimeter() + " ft"); // 20
-        System.out.println("Area: " + box3.getArea() + " sqft"); //25
+        System.out.println("Perimeter: " + box3.getPerimeter() + " ft"); // 36
+        System.out.println("Area: " + box3.getArea() + " sqft"); //81
 
         //lets make a list...
         System.out.println("=========== Array ====== ");
@@ -40,7 +40,7 @@ public class ShapesTest {
             System.out.println("Area: " + r.getArea() + " sqft");
         }
 
-        System.out.println("=========================");
+        System.out.println("===========BONUS==============");
         Rectangle rectangle = new Rectangle(20,40);
         showRectangleInfo(rectangle);
     }
