@@ -18,7 +18,6 @@ public class ServerNameGenerator {
 //        Create a method that will return a random element from an array of strings.
 
     private static String generateRandomName() {
-
         int rnd1 = (int) (Math.random() * adjectives.length);
         int rnd2 = (int) (Math.random() * nouns.length);
         return adjectives[rnd1] + "-" + nouns[rnd2];
