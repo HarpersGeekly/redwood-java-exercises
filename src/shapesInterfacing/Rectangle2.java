@@ -6,9 +6,10 @@ package shapesInterfacing;
 public class Rectangle2 extends Quadrilateral implements Measurable {
 
     public Rectangle2(double length, double width) {
-        super(length, width);
+        super(length, width); // uses the parent constructor (Quadrilateral)
     }
 
+    //=========== Overridden abstract methods from the Quadrilateral abstract class. Now they are further defined =======================
     @Override
     public void setLength(double side) {
         this.length = side;

@@ -9,6 +9,11 @@ public class Square2 extends Quadrilateral{
         super(side, side);
     }
 
+//=========== Overridden abstract methods from the Quadrilateral abstract class. Now they are further defined =======================
+
+//    Because the length of all sides of a square are the same,
+//    the methods for setting the length and the width should set both protected properties.
+
     @Override
     public void setLength(double side) {
         this.length = side;
@@ -22,13 +27,11 @@ public class Square2 extends Quadrilateral{
     }
 
     public double getPerimeter() {
-        System.out.println("Square.getPerimeter:");
         return super.getWidth() * 4;
 //        return this.side * 4;
     }
 
     public double getArea() {
-        System.out.println("Square.getArea:");
         return super.getWidth() * super.getLength();
 //
     }
