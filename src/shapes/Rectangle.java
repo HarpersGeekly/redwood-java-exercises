@@ -6,8 +6,8 @@ package shapes;
 public class Rectangle {
 
 
-    private double length;
-    private double width;
+    protected double length; //Protected = a version of public restricted only to subclasses. Can be seen by subclasses or package member.
+    protected double width;
 
     public Rectangle(double length, double width) {
         this.length = length;
