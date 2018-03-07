@@ -26,13 +26,15 @@ public class Square2 extends Quadrilateral{
         this.width = side;
     }
 
+    @Override
     public double getPerimeter() {
         return super.getWidth() * 4;
 //        return this.side * 4;
     }
 
+    @Override
     public double getArea() {
-        return super.getWidth() * super.getLength();
+        return super.getWidth() * super.getWidth();
 //
     }
 }
