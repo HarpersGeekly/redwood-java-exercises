@@ -2,6 +2,7 @@ package studentGrades;
 
 import validator.Validator;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -9,17 +10,17 @@ import java.util.HashMap;
  */
 public class GradesApplication {
 
-        static Validator validator = new Validator();
-        static DecimalFormat df = new DecimalFormat("#.##");
+    static Validator validator = new Validator();
+    static DecimalFormat df = new DecimalFormat("#.##");
 
     public static void main(String[] args) {
 
         HashMap<String, Student> students = new HashMap<>();
 
-        Student tyler = new Student("Tyler");
-        Student brad = new Student("Brad");
-        Student ryan = new Student("Ryan");
-        Student gideon = new Student("Gideon");
+        Student tyler = new Student("Tyler Hinton");
+        Student brad = new Student("Brad Goode");
+        Student ryan = new Student("Ryan Harper");
+        Student gideon = new Student("Gideon Rogers");
 
         tyler.addGrade(90.1);
         tyler.addGrade(96.3);
@@ -41,44 +42,113 @@ public class GradesApplication {
         students.put("SeouledOut", gideon);
 
         do {
-
-            System.out.println("=========================== List of GitHub UserNames =====================================\n");
-
             viewMenu(students);
-
-            String userSelect = validator.getString("\n======== What student would you like to see more information on? ========");
-
-            if (students.containsKey(userSelect)) {
-                System.out.println("GitHub Username " + userSelect + "'s real name is: " + students.get(userSelect).getName());
-                System.out.println(userSelect + "'s average grade is: " + df.format(students.get(userSelect).getGradeAverage()));
-
-            } else if (userSelect.contains("View")) {
-                viewAllStudents(students);
-
-            } else {
-                System.out.println("Sorry, no username with name " + userSelect + " exists.");
-            }
-
-        } while (validator.yesNo("Enter another student? Y/N"));
+        } while (validator.yesNo("Back to Menu? Y/N"));
         System.out.println("Goodbye.");
+        System.exit(0);
+
 
     } // END OF MAIN METHOD ============================================================================================
 
     public static void viewMenu(HashMap<String, Student> students) {
-        for (String usernames : students.keySet()) {
-            // for each String usernames in the students collection
-            System.out.print(" | " + usernames + " | ");
-        }
-        System.out.print("View All\n");
-    }
-    public static void viewAllStudents(HashMap<String, Student> students) {
-        for(String usernames : students.keySet()) {
-            Student curStudent = students.get(usernames);
-            System.out.println("GitHub Username: " + usernames + " | Name: " + curStudent.getName() + " | Average Grade: " + df.format(curStudent.getGradeAverage()));
-        }
-    }
-}
 
+        System.out.println("===========================");
+        System.out.println("What would you like to do? ");
+        System.out.println("===========================");
+        System.out.println("[1] Choose Student");
+        System.out.println("[2] View Class Report");
+        System.out.println("[3] View Class Average");
+        System.out.println("[4] Exit");
+
+        int userInput = validator.getIntWithinRange("Enter an option:", 1, 4);
+
+        switch (userInput) {
+            case 1:
+                viewStudent(students);
+                break;
+            case 2:
+                viewAllStudents(students);
+                break;
+            case 3:
+                viewClassAverage(students);
+                break;
+            case 4:
+                System.out.println("Goodbye.");
+                System.exit(4);
+                break;
+            default:
+                break;
+        }
+    }
+
+    public static void viewStudent(HashMap<String, Student> students) {
+
+        for (String username : students.keySet()) {
+            // for each String username in the students collection
+            System.out.println(username);
+        }
+
+        String userSelect = validator.getString("\n======== What student would you like to see more information on? ========");
+
+        if (students.containsKey(userSelect)) {
+            System.out.println("GitHub Username " + userSelect + "'s real name is: " + students.get(userSelect).getName());
+            System.out.println(userSelect + "'s average grade is: " + df.format(students.get(userSelect).getGradeAverage()));
+        } else {
+            System.out.println("Sorry, no username with name " + userSelect + " exists.");
+        }
+    }
+
+    public static void viewAllStudents(HashMap<String, Student> students) {
+        for (String username : students.keySet()) {
+            Student curStudent = students.get(username);
+            System.out.println("GitHub Username: " + username + " | Name: " + curStudent.getName() + " | Average Grade: " + df.format(curStudent.getGradeAverage()));
+        }
+    }
+
+    public static void viewClassAverage(HashMap<String, Student> students) {
+
+        ArrayList<Double> grades = new ArrayList<>();
+
+        // Loop through HashMap and acquire the average for each student. Take that grade and place it in a list:
+        for(Student student : students.values()) {
+            double averagePerStudent = student.getGradeAverage();
+            grades.add(averagePerStudent);
+        }
+
+        // Loop through each grade in the grades array and add them together:
+        double result = 0;
+        for(double grade : grades) {
+            result += grade;
+        }
+
+        // Take the result and divide by number of students. Print the final class average with decimal format.
+        double classAverage = result / grades.size();
+        System.out.println("Class average = " + df.format(classAverage));
+        }
+    }
+//
+//    **Bonus**
+//
+//    If you are done...
+
+//            - Add an attendance property to your Student objects. It should be a
+//    HashMap<String, String>. The keys should be strings representing the date,
+//    in the format "2017-10-02", and the values should be Strings that are one
+//    of:
+//            - "A": Absent
+//        - "P": Present
+//
+//        - Add a method named `recordAttendance(String date, String value)` that
+//    adds records to the HashMap this method should make sure `value` is an
+//    an acceptable string (else { callMethodAgain()}
+//        - Create an instance method on your Student class to calculate a
+//            student's attendance percentage -- (Total Days - Absences) / Total Days
+//            - Add the attendance information to the output of your command line
+//    interface, this should require only a small change
+//        - Create an instance method on Student that finds the specific days a
+//    student was absent. This method should return a List of Strings, where
+//    each string is the date of the absence
+//
 
 
 
