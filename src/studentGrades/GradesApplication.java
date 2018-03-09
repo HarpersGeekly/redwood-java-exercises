@@ -47,8 +47,7 @@ public class GradesApplication {
         System.out.println("Goodbye.");
         System.exit(0);
 
-
-    } // END OF MAIN METHOD ============================================================================================
+    } //<<< END OF MAIN METHOD =========================================================================================
 
     public static void viewMenu(HashMap<String, Student> students) {
 
@@ -92,9 +91,11 @@ public class GradesApplication {
 
         if (students.containsKey(userSelect)) {
             System.out.println("GitHub Username " + userSelect + "'s real name is: " + students.get(userSelect).getName());
+            System.out.println(userSelect + "'s grades are: " + students.get(userSelect).getGrades());
             System.out.println(userSelect + "'s average grade is: " + df.format(students.get(userSelect).getGradeAverage()));
         } else {
             System.out.println("Sorry, no username with name " + userSelect + " exists.");
+            viewStudent(students);
         }
     }
 
@@ -201,18 +202,3 @@ public class GradesApplication {
 //
 //        Display all of the student's grades in addition to the grade average
 //        Allow the user to view all of the grades for all of the students
-
-
-
-//                for (Student student : students.values()) {
-//
-////                    for(String usernames : students.keySet()) {
-////                        Student currentStudent = students.get(usernames);
-//                    // for each String username in the students.keySet() collection
-////                        System.out.print("GitHub Username: " + usernames);
-////                    }
-////                    System.out.println("Github Username: " + students.get(usernames)    );
-//                    System.out.println("Name: " + student.getName());
-//                    System.out.println("Average Grade: " + df.format(student.getGradeAverage()));
-//                    System.out.println("==========================");
-//                }

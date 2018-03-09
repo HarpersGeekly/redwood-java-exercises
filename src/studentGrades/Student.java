@@ -2,6 +2,7 @@ package studentGrades;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created by RyanHarper on 10/2/17.
@@ -10,11 +11,13 @@ public class Student {
 
     private String name;
     private ArrayList<Double> grades;
+    private HashMap<String, String> attendance;
 
 
     public Student(String name) {
         this.name = name;
         this.grades = new ArrayList<>();
+        this.attendance = new HashMap<>();
     }
 
     public String getName() {
@@ -23,6 +26,10 @@ public class Student {
 
     public void addGrade(double grade) {
         grades.add(grade);
+    }
+
+    public ArrayList<Double> getGrades() {
+        return grades;
     }
 
     public double getGradeAverage() {
