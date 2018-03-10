@@ -32,5 +32,9 @@ public class ValidatorTestApp {
 
             validator.getDoubleWithinRange("Give me a number between " + doubleMin + " and " + doubleMax + ":", doubleMin, doubleMax);
             System.out.println("Good Job!");
+
+            validator.getHex("enter a hex number");
+            validator.getBinary("enter a binary number");
+
     }
 }

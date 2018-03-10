@@ -151,6 +151,48 @@ public class Validator {
         }
     }
 
+//    public Integer getBinary(String binary) {
+//        Integer i = Integer.parseInt(binary, 2);
+//        System.out.println("Integer value: " + i);
+//        return i;
+//    }
+
+    public int getBinary(String prompt) {
+
+        String scanned = getString(prompt);
+
+        try {
+            Integer result = Integer.valueOf(scanned, 2);
+            System.out.println(result);
+            return Integer.valueOf(scanned, 2);
+        } catch (NumberFormatException e) {
+            System.out.println(e.toString());
+            System.out.println("ERROR -- Input must be a valid binary value");
+            return getBinary(prompt);
+        }
+    }
+
+//    public Integer getHex(String hex) {
+//        Integer i = Integer.parseInt(hex, 16);
+//        System.out.println("Integer value: " + i);
+//        return i;
+//    }
+
+    public int getHex(String prompt){
+
+        String userInput = getString(prompt);
+
+        try {
+            Integer result = Integer.valueOf(userInput, 16);
+            System.out.println(result);
+            return Integer.valueOf(userInput, 16);
+        } catch (NumberFormatException e) {
+            System.out.println(e.toString());
+            System.out.println("ERROR -- Input must be a valid hex value.");
+            return getHex(prompt);
+        }
+    }
+
     public boolean isPrime(int n){
         for(int i = 2 ; i <= n/2; i++) {
             if (n % i == 0) {
