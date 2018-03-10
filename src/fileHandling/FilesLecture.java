@@ -1,4 +1,4 @@
-package files;
+package fileHandling;
 
 import validator.Validator;
 
@@ -16,7 +16,7 @@ import java.util.List;
 public class FilesLecture {
     public static void main(String[] args) throws IOException {
 //        Path directory = Paths.get("resources"); // directories
-        Path path = Paths.get("resources", "info.txt"); // files
+        Path path = Paths.get("resources", "info.txt");
 
         // create a path with a directory "resources", and a file "info.txt", if they don't exist, have Java create it for me:
 
