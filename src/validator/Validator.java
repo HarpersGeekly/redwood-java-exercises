@@ -122,8 +122,7 @@ public class Validator {
         }
         return stringInput;
     }
-
-
+    
     public String getPhoneNumber(String prompt){
         System.out.println(prompt);
         String userInput = scan.nextLine();
@@ -151,12 +150,6 @@ public class Validator {
         }
     }
 
-//    public Integer getBinary(String binary) {
-//        Integer i = Integer.parseInt(binary, 2);
-//        System.out.println("Integer value: " + i);
-//        return i;
-//    }
-
     public int getBinary(String prompt) {
 
         String scanned = getString(prompt);
@@ -171,12 +164,6 @@ public class Validator {
             return getBinary(prompt);
         }
     }
-
-//    public Integer getHex(String hex) {
-//        Integer i = Integer.parseInt(hex, 16);
-//        System.out.println("Integer value: " + i);
-//        return i;
-//    }
 
     public int getHex(String prompt){
 
@@ -202,3 +189,15 @@ public class Validator {
         return true;
     }
 }
+
+//    public Integer getBinary(String binary) {
+//        Integer i = Integer.parseInt(binary, 2);
+//        System.out.println("Integer value: " + i);
+//        return i;
+//    }
+
+//    public Integer getHex(String hex) {
+//        Integer i = Integer.parseInt(hex, 16);
+//        System.out.println("Integer value: " + i);
+//        return i;
+//    }
