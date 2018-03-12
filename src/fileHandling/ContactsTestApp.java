@@ -7,37 +7,16 @@ import java.util.List;
  * Created by RyanHarper on 10/4/17.
  */
 public class ContactsTestApp {
+
+    private static Validator validator = new Validator();
+    private static FileHandler fileHandler = new FileHandler("data", "contacts.txt");
+    private static List<String> contacts = fileHandler.retrieveFileContents();
+
     public static void main(String[] args) {
-        Validator validator = new Validator();
-        FileHandler fileHandler = new FileHandler("data", "contacts.txt");
-        List<String> contacts = fileHandler.retrieveFileContents();
 
         do {
             showMainMenu();
-            int userInput = validator.getIntWithinRange("Enter an option (1, 2, 3, 4 or 5):", 1, 5);
-
-            switch (userInput) {
-                case (1):
-                    viewAllContacts(contacts);
-                    break;
-                case (2):
-                    addNewContact(contacts, validator);
-                    break;
-                case (3):
-                    searchByName(contacts, validator);
-                    break;
-                case (4):
-                    deleteContact(contacts, validator);
-                    break;
-                case (5):
-                    System.exit(0);
-                default:
-                    break;
-            }
         } while (validator.yesNo("Main Menu? Y/N"));
-
-        fileHandler.writeToFile(contacts);
-
         System.out.println("Goodbye.");
     }
 
@@ -50,15 +29,36 @@ public class ContactsTestApp {
         System.out.println("[3] Search a contact by name.");
         System.out.println("[4] Delete an existing contact.");
         System.out.println("[5] Exit.");
-    }
 
+        int userInput = validator.getIntWithinRange("Enter an option (1, 2, 3, 4 or 5):", 1, 5);
+
+        switch (userInput) {
+            case (1):
+                viewAllContacts(contacts);
+                break;
+            case (2):
+                addNewContact(contacts, validator);
+                break;
+            case (3):
+                searchByName(contacts, validator);
+                break;
+            case (4):
+                deleteContact(contacts, validator);
+                break;
+            case (5):
+                fileHandler.writeToFile(contacts);
+                System.out.println("Goodbye.");
+                System.exit(0);
+            default:
+                break;
+        }
+    }
 
     private static void viewAllContacts(List<String> contacts) {
 
         System.out.println("Viewing All Contacts");
         System.out.println("Name | Phone Number");
         System.out.println("-------------------");
-
         for (String contact : contacts) {
             System.out.println(contact);
         }
@@ -67,29 +67,42 @@ public class ContactsTestApp {
     private static void addNewContact(List<String> contacts, Validator validator) {
 
         do {
-            String contactName = validator.getString("Add Contact Name:");
+            String contactName = validator.getString("Add Contact Name (\"exit\" to cancel): ");
+            if (contactName.equalsIgnoreCase("exit")) {
+                showMainMenu();
+                break;
+            }
             String contactPhoneNumber = validator.getPhoneNumber("Add Phone Number for Contact(xxx)xxx-xxxx:");
-
             contacts.add(contactName + " | " + contactPhoneNumber.replaceFirst("(\\d{3})(\\d{3})(\\d{4})", "($1) $2-$3"));
             System.out.println(contactName + " | " + contactPhoneNumber.replaceFirst("(\\d{3})(\\d{3})(\\d{4})", "($1) $2-$3"));
+
         } while (validator.yesNo("Add another contact? Y/N"));
     }
 
     private static void searchByName(List<String> contacts, Validator validator) {
 
-        String contactName = validator.getString("Enter contact name to Search:");
-
-        for (String contact : contacts) {
-            if (contact.contains(contactName)) {
-                System.out.println(contact);
+        do {
+            String contactName = validator.getString("Enter contact name to Search (\"exit\" to cancel): ");
+            if (contactName.equalsIgnoreCase("exit")) {
+                showMainMenu();
+                break;
             }
-        }
+            for (String contact : contacts) {
+                if (!contact.contains(contactName)) {
+                    System.out.println("There is no contact with name: " + contactName);
+                    searchByName(contacts, validator);
+                    break;
+                }
+                if (contact.contains(contactName)) {
+                    System.out.println(contact);
+                }
+            }
+        } while (validator.yesNo("Search again? Y/N")) ;
     }
 
     private static void deleteContact(List<String> contacts, Validator validator) {
 
         String contactName = validator.getString("Enter contact name to Search:");
-
         contacts.removeIf(contact -> {
             if (contact.contains(contactName) && validator.yesNo("Delete " + contact + ", Y/N?")) {
                 System.out.println("The contact, " + contact + " has been deleted.");
@@ -98,15 +111,10 @@ public class ContactsTestApp {
                 return false;
             }
         });
-
-//        contacts.removeIf(contact -> contact.contains(contactName) && validator.yesNo("Delete " + contact + ", Y/N?"));
-//        System.out.println("The contact, " + contactName  + ", has been removed.");
-//        fw.writeToFile(contacts); // couple this with removeIf()
     }
 }
 
-
-
+//============================================ Initial Instructions ====================================================
 //    Contacts Manager
 
 //    We will be building a command line application for keeping track of "contacts", a name and phone number combination.
@@ -164,3 +172,8 @@ public class ContactsTestApp {
 //        Jane Doe   | 789-8902     |
 //        Sam Space  | 210-581-8123 |
 //        Hint: you can use format strings with the System.our.printf or String.format methods to ensure the columns have the same width.
+
+// deleteMethod(): alternative?
+//       contacts.removeIf(contact -> contact.contains(contactName) && validator.yesNo("Delete " + contact + ", Y/N?"));
+//       System.out.println("The contact, " + contactName  + ", has been removed.");
+//       fw.writeToFile(contacts); // couple this with removeIf()
