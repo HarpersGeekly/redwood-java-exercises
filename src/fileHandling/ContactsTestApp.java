@@ -102,15 +102,28 @@ public class ContactsTestApp {
 
     private static void deleteContact(List<String> contacts, Validator validator) {
 
-        String contactName = validator.getString("Enter contact name to Search:");
-        contacts.removeIf(contact -> {
-            if (contact.contains(contactName) && validator.yesNo("Delete " + contact + ", Y/N?")) {
-                System.out.println("The contact, " + contact + " has been deleted.");
-                return true;
-            } else {
-                return false;
+        do {
+            String contactName = validator.getString("Enter contact name to Search (\"exit\" to cancel):");
+            if (contactName.equalsIgnoreCase("exit")) {
+                showMainMenu();
+                break;
             }
-        });
+            for (String contact : contacts) {
+                if (!contact.contains(contactName)) {
+                    System.out.println("There is no contact with name: " + contactName);
+                    deleteContact(contacts, validator);
+                }
+                break;
+            }
+            contacts.removeIf(contact -> {
+                if (contact.contains(contactName) && validator.yesNo("Delete " + contact + ", Y/N?")) {
+                    System.out.println("The contact, " + contact + " has been deleted.");
+                    return true;
+                } else {
+                    return false;
+                }
+            });
+        } while (validator.yesNo("Delete another contact? Y/N"));
     }
 }
 
