@@ -23,7 +23,8 @@ public class FibonacciGenerator {
     private static void getFibonacciSequence(Validator validator, int max) {
         int x = 0;
         int y = 1;
-        for (int i = 1; i <= Integer.MAX_VALUE; i++) {
+//        for (int i = 1; i <= Integer.MAX_VALUE; i++) {
+        for (int i = 1; i <= max; i++) {
             System.out.println(x);
             x = x + y;
             y = x - y;
