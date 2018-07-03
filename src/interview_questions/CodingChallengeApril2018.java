@@ -64,7 +64,7 @@ public class CodingChallengeApril2018 {
         sortAlphabetically(wordToSort);
 
         System.out.println("====== QUESTION 2 =====");
-        String wordForVowels = validator.getString("Enter a world to count vowels");
+        String wordForVowels = validator.getString("Enter a word to count vowels");
         getVowels(wordForVowels);
 
         System.out.println("====== QUESTION 3 =====");
