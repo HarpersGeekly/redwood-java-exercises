@@ -19,12 +19,6 @@ public class FizzBuzz {
         System.out.println("============== myFizzBuzz========");
         myFizzBuzz(100);
 
-        System.out.println("============== fizzBuzzJava8 ========");
-        System.out.println(fizzBuzzInJava8(100));
-
-        System.out.println("============== fizzBuzzJava8longer ========");
-        System.out.println(fizzBuzzSolutionJava8(100));
-
     }
 
     public static void myFizzBuzz(int max) {
@@ -41,27 +35,7 @@ public class FizzBuzz {
         }
     }
 
-    public static String fizzBuzzInJava8(int number) {
-        String result = Optional.of(number)
-                .map(n -> (n % 3 == 0 ? "Fizz" : "") + (n % 5 == 0 ? "Buzz" : ""))
-                .get();
-        return result.isEmpty() ? Integer.toString(number) : result;
-    }
 
-    public static String fizzBuzzSolutionJava8(int input) {
-        return Optional.of(input)
-                .map(i -> {
-                    if (i % (3 * 5) == 0) {
-                        return "FizzBuzz";
-                    } else if (i % 3 == 0) {
-                        return "Fizz";
-                    } else if (i % 5 == 0) {
-                        return "Buzz";
-                    } else {
-                        return Integer.toString(i);
-                    }
-                }).get();
-    }
 }
 
 
