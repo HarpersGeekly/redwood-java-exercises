@@ -40,11 +40,11 @@ public class HighLow {
                 System.out.println("YOU GOT IT!");
                 System.out.println("It took you " + counter + " times to guess.");
                 if (counter == 1) {
-                    System.out.println("Lucky guess!! Good Game!" + "============================");
+                    System.out.println("Wow! You must be psychic!!" + "============================");
                 } else if(counter <= 6) {
-                    System.out.println("Not too shabby...\n" + "============================");
+                    System.out.println("Not too shabby...you may be psychic, good job!\n" + "============================");
                 } else if(counter > 6) {
-                    System.out.println("Keep trying, champ...\n" + "============================");
+                    System.out.println("Nice try, but stay away from Vegas...\n" + "============================");
                 }
             } else if (userInput < randomNumber) {
                 System.out.println("Higher...");
