@@ -19,7 +19,7 @@ public class ControlFlowExercises {
         int i = 5;
 
         while (i <= 15) {
-            System.out.println("i = " + i++);
+            System.out.print(i++ + " ");
         }
 //        Your output should look like this:
 //        5 6 7 8 9 10 11 12 13 14 15
@@ -27,6 +27,7 @@ public class ControlFlowExercises {
 //        ============================================  Do While =======================================================
 
 //        Create a do-while loop that will count by 2's starting with 0 and ending at 100. Follow each number with a new line.
+        System.out.println();
         System.out.println("=========do while ================");
         int x = 0;
 
