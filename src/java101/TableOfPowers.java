@@ -31,7 +31,8 @@ public class TableOfPowers {
         long userCubed;
         String userWantsToContinue;
 
-            System.out.println("This app will display a Table of Powers: a number, that number squared, and that number cubed.");
+        System.out.println("This app will display a Table of Powers: a number, that number squared, and that number cubed.");
+
         do {
 //        Prompt the user to enter an integer.
             System.out.println("Type a number to go up to:");
