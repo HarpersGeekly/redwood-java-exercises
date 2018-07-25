@@ -21,6 +21,9 @@ public class FizzBuzz {
         System.out.println("============== myFizzBuzz Java 8========");
         myFizzBuzzJava8(100);
 
+        System.out.println("============== myFizzBuzz Java 8 again========");
+        myFizzBuzzJava8again(100);
+
     }
 
     public static void myFizzBuzz(int max) {
@@ -46,7 +49,7 @@ public class FizzBuzz {
             else return n;
         }).forEach(System.out::println);
     }
-
+    
 // The first step is to get a stream of the numbers from 1 to 100. This is done by calling
 // IntStream.range(1, 101). The second argument is exclusive, so to get 1 to 100 we need to specify 101 as the end value.
 
@@ -66,6 +69,14 @@ public class FizzBuzz {
 // This is a very simple example, but I hope it demonstrates the power of lambda expressions.
 
 // http://www.thinksincode.com/2014/03/19/functional-fizzbuzz-with-java-8-streams.html
+
+    public static void myFizzBuzzJava8again(int max) {
+    IntStream.range(1, max)
+            .boxed()
+        .map(x -> x + ": " + (x % 3 == 0 ? "Fizz": "") + (x % 5 == 0 ? "Buzz": ""))
+            .forEach(System.out::println);
+    }
+
 }
 
 
