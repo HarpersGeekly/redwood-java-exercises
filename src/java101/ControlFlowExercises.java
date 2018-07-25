@@ -28,7 +28,7 @@ public class ControlFlowExercises {
 
 //        Create a do-while loop that will count by 2's starting with 0 and ending at 100. Follow each number with a new line.
         System.out.println();
-        System.out.println("=========do while ================");
+        System.out.println("=========do while count by 2's================");
         int x = 0;
 
         do {
@@ -37,7 +37,7 @@ public class ControlFlowExercises {
         } while (x <= 100);
 
 //        Alter your loop to count backwards by 5's from 100 to -10.
-        System.out.println("=========do while ================");
+        System.out.println("=========do while backwards by 5================");
 
         int y = 100;
 
@@ -47,7 +47,7 @@ public class ControlFlowExercises {
         } while (y >= -10);
 
 //        Create a do-while loop that starts at 2, and displays the number squared on each line while the number is less than 1,000,000.
-        System.out.println("========do while =================");
+        System.out.println("========do while number squared=================");
 
         long z = 2;
         do {
@@ -65,19 +65,19 @@ public class ControlFlowExercises {
 
 //        refactor the previous two exercises to use a for loop instead
 
-        System.out.println("========== for ===============");
+        System.out.println("========== for loop count by 2s ===============");
 
         for (int a = 2; a <= 100; a++) {
             System.out.println(a);
         }
 
-        System.out.println("========== for ===============");
+        System.out.println("========== for loop backwards by 5===============");
 
         for (int b = 5; b >= -10; b -= 5) {
             System.out.println(b);
         }
 
-        System.out.println("=========== for ==============");
+        System.out.println("=========== for loop number squared ==============");
 
         for (long c = 2; c < 1000000; c *= c) {
             System.out.println(c);
