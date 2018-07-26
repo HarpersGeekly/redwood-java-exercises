@@ -29,7 +29,7 @@ public class CalculateFactorial {
         String userWantsToContinue;
 
         do {
-            int userInput = getIntegerWithinRange(1, 10);
+            int userInput = getIntegerWithinRange(1, 10, scan);
             long factorialNumber = calculateFactorial(userInput);
             System.out.println("The factorial of " + userInput + "! = " + factorialNumber);
             System.out.println("Try another? Yes/No");
@@ -41,17 +41,16 @@ public class CalculateFactorial {
         System.out.println("Catch ya later!");
     }
 // =====================================================================================================================
-    private static int getIntegerWithinRange(int min, int max) {
+    private static int getIntegerWithinRange(int min, int max, Scanner scan) {
         System.out.print("Enter a number between " + min + " and " + max + " to be 'factorialized': ");
-        Scanner scan = new Scanner(System.in);
 //        int userInput = Integer.parseInt(scan.nextLine()); Is the same as:
         int userInput = scan.nextInt();
-
+        
         if (userInput < min || userInput > max) {
             System.out.println("ERROR -- Integer is out of range between " + min + " and " + max);
 //        If the input is invalid, prompt the user again:
 //        Hint: recursion might be helpful here!
-            return getIntegerWithinRange(min, max);
+            return getIntegerWithinRange(min, max, scan);
         } else {
             return userInput;
         }
