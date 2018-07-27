@@ -45,7 +45,7 @@ public class CalculateFactorial {
         System.out.print("Enter a number between " + min + " and " + max + " to be 'factorialized': ");
 //        int userInput = Integer.parseInt(scan.nextLine()); Is the same as:
         int userInput = scan.nextInt();
-        
+
         if (userInput < min || userInput > max) {
             System.out.println("ERROR -- Integer is out of range between " + min + " and " + max);
 //        If the input is invalid, prompt the user again:
