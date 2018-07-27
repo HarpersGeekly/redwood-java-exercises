@@ -27,8 +27,7 @@ public class FizzBuzz {
     }
 
     public static void myFizzBuzz(int max) {
-        int x;
-        for (x = 1; x <= max; x++) {
+        for (int x = 1; x <= max; x++) {
         if (x % 3 == 0 && x % 5 == 0) {
             System.out.println("FizzBuzz");
         } else if (x % 3 == 0) {
