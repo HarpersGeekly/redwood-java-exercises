@@ -64,9 +64,11 @@ public class CalculateFactorial {
         for (int i = 1; i <= userInput; i++) {
 //            factorialNumber *= i; This means: factorialNumber = factorialNumber * 1, so, the factorialNumber.;
 
-            //design it to include all the previous numbers and "x":
-            details += (i == 1) ? i : " x " + i;
-            System.out.println(i + "! = " + i + " = " + details + " = " + (factorialNumber *= i));
+            //If I want to design it to include all the previous numbers and "x":
+//            details += (i == 1) ? i : " x " + i;
+//            System.out.println(i + "! = " + i + " = " + details + " = " + (factorialNumber *= i));
+
+            factorialNumber *= i;
         }
         return factorialNumber;
     }
