@@ -7,13 +7,11 @@ import validator.Validator;
  */
 //===========================================    Server Name Generator  ================================================
 public class ServerNameGenerator {
-//        Create two arraysAndCollections whose elements are strings, one with at least 10 adjectives, another with at least 10 nouns.
+//        Create two arrays whose elements are strings, one with at least 10 adjectives, another with at least 10 nouns.
 
-    private static String[] adjectives = new String[]
-                    {"Short", "Tall", "Old", "Young", "Important", "Fast", "Slow", "Big", "Dumb", "Wise"};
+    private static String[] adjectives = {"Short", "Tall", "Old", "Young", "Important", "Fast", "Slow", "Big", "Dumb", "Wise"};
 
-    private static String[] nouns = new String[]
-                {"Bus", "Airplane", "Train", "Tree", "Animal", "Person", "London", "Lightning", "Apple", "Banana"};
+    private static String[] nouns = {"Bus", "Airplane", "Train", "Tree", "Animal", "Person", "London", "Lightning", "Apple", "Banana"};
 
 //        Create a method that will return a random element from an array of strings.
 
