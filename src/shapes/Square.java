@@ -21,12 +21,16 @@ public class Square extends Rectangle {
     @Override
     public double getArea() {
         return super.getWidth() * super.getLength();
+// OR
+//        return length * length;
 //        return this.side * this.side;
     }
 
     @Override
     public double getPerimeter() {
         return super.getWidth() * 4;
+// OR
+//        return length * 4;
 //        return this.side * 4;
     }
 // Re-run your ShapesTest class. How can you determine which getArea and getPerimeter methods are being called on each object?

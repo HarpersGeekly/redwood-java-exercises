@@ -84,9 +84,9 @@ public class MoviesApplication {
 
         for (Movie movie : movies) {
             if (movie.getGenre().equalsIgnoreCase(genre) || genre.equalsIgnoreCase("all")) {
-                //System.out.println(movie.getTitle() + " -- " + movie.getGenre() + "--" + movie.getRating());
+                System.out.println(movie.getTitle() + " -- " + movie.getGenre() + "--" + movie.getRating());
                 //you can refactor this with toString()...
-                System.out.println(movie.toString());
+//                System.out.println(movie.toString());
             }
         }
 
@@ -96,12 +96,12 @@ public class MoviesApplication {
     private static void addMovie() {
         //get input from the user title and genre
         String title = validator.getString("Enter a title:");
-            System.out.println("Animated");
-            System.out.println("Musical");
-            System.out.println("Comedy");
-            System.out.println("Drama");
-            System.out.println("Horror");
-            System.out.println("Scifi");
+        System.out.println("Animated");
+        System.out.println("Musical");
+        System.out.println("Comedy");
+        System.out.println("Drama");
+        System.out.println("Horror");
+        System.out.println("Scifi");
         String genre = validator.getString("Enter a genre:");
         int rating = validator.getIntWithinRange("Enter a rating between 1 and 5:",1, 5);
 
@@ -110,7 +110,7 @@ public class MoviesApplication {
         System.out.println("You added: " + title + ". Genre: " + genre + ". Rating: " + rating);
 
         // "Add" that movie to the movie array...
-            //create a copy of the array with a larger length:
+        //create a copy of the array with a larger length:
         Movie[] moviesPlus = Arrays.copyOf(movies, movies.length + 1);
 
         // Add new movie to the copy. set the item at the last index to our new array
