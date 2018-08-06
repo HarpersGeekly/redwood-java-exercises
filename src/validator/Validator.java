@@ -52,10 +52,11 @@ public class Validator {
 
         System.out.println(prompt);
         String doubleInput;
+
         try {
             doubleInput = scan.nextLine();
             return Double.valueOf(doubleInput);
-        } catch (IllegalArgumentException e) {
+        } catch (NumberFormatException e) {
             System.out.println("ERROR -- Input must be an integer");
             return getDouble(prompt);
         }
@@ -64,21 +65,18 @@ public class Validator {
 
     public double getDoubleWithinRange(String prompt, double min, double max) {
 
+        double doubleInput = getDouble(prompt);
+
         try {
-            double doubleInput = getDouble(prompt);
 
             if (doubleInput < min || doubleInput > max) {
                 throw new IllegalArgumentException("ERROR -- Integer is out of range between " + min + " and " + max);
             }
-            return doubleInput;
-        } catch (InputMismatchException e) {
-            System.out.println("ERROR -- Input must be an integer.");
-            scan.nextLine();
-            return getDoubleWithinRange(prompt, min, max);
         } catch (IllegalStateException | IllegalArgumentException e) { //listening for either of these exceptions.
             System.out.println(e.getMessage());
             return getDoubleWithinRange(prompt, min, max);
         }
+        return doubleInput;
     }
 
     public void setTimeout(int milliseconds) {
@@ -91,8 +89,10 @@ public class Validator {
     }
 
     public boolean yesNo(String prompt){
+
         String userWantsToContinue;
         System.out.println(prompt);
+
         try {
             userWantsToContinue = scan.nextLine();
             if (!userWantsToContinue.toLowerCase().startsWith("y") && !userWantsToContinue.toLowerCase().startsWith("n")){
@@ -124,11 +124,13 @@ public class Validator {
     }
     
     public String getPhoneNumber(String prompt){
+
         System.out.println(prompt);
         String userInput = scan.nextLine();
         Pattern pattern = Pattern.compile("^\\(?([2-9][0-8][0-9])\\)?[-.●]?([2-9][0-9]{2})[-.●]?([0-9]{4})$");
 //                "^(?:(?:\\\\+?1\\\\s*(?:[.-]\\\\s*)?)?(?:\\\\(\\\\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9])\\\\s*\\\\)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\\\\s*(?:[.-]\\\\s*)?)?([2-9]1[02-9]|[2-9][02-9]1|[2-9][02-9]{2})\\\\s*(?:[.-]\\\\s*)?([0-9]{4})(?:\\\\s*(?:#|x\\\\.?|ext\\\\.?|extension)\\\\s*(\\\\d+))?$");
         Matcher match = pattern.matcher(userInput);
+
         if(match.matches()){
             return userInput;
         } else{
@@ -138,10 +140,12 @@ public class Validator {
     }
 
     public String getSongLength(String prompt) {
+
         System.out.println(prompt);
         String userInput = scan.nextLine();
         Pattern pattern = Pattern.compile("^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$");
         Matcher match = pattern.matcher(userInput);
+
         if(match.matches()){
             return userInput;
         } else{
@@ -181,6 +185,7 @@ public class Validator {
     }
 
     public boolean isPrime(int n){
+
         for(int i = 2 ; i <= n/2; i++) {
             if (n % i == 0) {
                 return false;
@@ -201,3 +206,18 @@ public class Validator {
 //        System.out.println("Integer value: " + i);
 //        return i;
 //    }
+
+//InputMismatchException vs NumberFormatException?
+
+//public class InputMismatchException extends NoSuchElementException
+//
+//        Thrown by a Scanner to indicate that the token retrieved does not match the pattern for the expected type,
+//        or that the token is out of range for the expected type. Thrown by the Scanner to indicate that the token
+//        retrieved does not match the pattern for the expected type, or that the token is out of range for the expected type
+//
+//public class NumberFormatException extends IllegalArgumentException
+//
+//        Thrown to indicate that the application has attempted to convert a string to one of the numeric types,
+//        but that the string does not have the appropriate format. Thrown to indicate that the application has attempted
+//        to convert a string to one of the numeric types, but that the string does not have the appropriate format
+
