@@ -15,10 +15,12 @@ import java.util.List;
  */
 public class FilesLecture {
     public static void main(String[] args) throws IOException {
-//        Path directory = Paths.get("resources"); // directories
-        Path path = Paths.get("resources", "info.txt");
 
-        // create a path with a directory "resources", and a file "info.txt", if they don't exist, have Java create it for me:
+//        Path directory = Paths.get("resources"); // directories
+        Path path = Paths.get("resources", "groceries.txt");
+
+        // create a path manually in IntelliJ with a directory "resources", and a file "groceries.txt",
+        // Or have Java create it if they don't exist:
 
         if (!Files.exists(path.getParent())) {
             Files.createDirectory(path.getParent());
@@ -31,32 +33,31 @@ public class FilesLecture {
         // write to a file:
 
 //        List<String> groceries = Arrays.asList("coffee,3", "tea,4", "sugar,2");
-        //same as:
         List<String> groceries = new ArrayList<>();
-        groceries.add("coffee, 3");
-        groceries.add("tea, 4");
-        groceries.add("sugar, 2");
-
         Validator validator = new Validator();
 
         do {
+            System.out.println("Current Grocery List: " + Files.readAllLines(path)); // read all the lines from a file
             String groceryItem = validator.getString("What do you need at the grocery store?");
             int quantity = validator.getInt("How many do you need?");
+
             groceries.add(groceryItem + ", " + quantity);
 
-            Files.write(path, groceries);
         } while (validator.yesNo("Add another item? Y/N"));
-//        Files.write(path, groceries, StandardOpenOption.APPEND); // write several lines to a file
 
-        List<String> mySavedGroceries = Files.readAllLines(path); // read all the lines from a file
+        try {
+//          Files.write(path, groceries);
+            Files.write(path, groceries, StandardOpenOption.APPEND); // write several lines to a file
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
+
+        List<String> mySavedGroceries = Files.readAllLines(path);
 
         for (String grocery: mySavedGroceries) {
             String[] parts = grocery.split(",");
             System.out.println("Item: " + parts[0] + " x" + parts[1]);
-
-//            System.out.println(grocery);
-        }
+            }
         System.out.println(path.toAbsolutePath());
     }
 }
-// manipulate information with an array, not the file.
