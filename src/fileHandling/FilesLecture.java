@@ -38,18 +38,21 @@ public class FilesLecture {
         groceries.add("sugar, 2");
 
         Validator validator = new Validator();
-        String groceryItem = validator.getString("What do you need at the grocery store?");
-        int quantity = validator.getInt("How many do you need?");
-        groceries.add(groceryItem + ", " +  quantity);
 
-//        Files.write(path, groceries);
-        Files.write(path, groceries, StandardOpenOption.APPEND); // write several lines to a file
+        do {
+            String groceryItem = validator.getString("What do you need at the grocery store?");
+            int quantity = validator.getInt("How many do you need?");
+            groceries.add(groceryItem + ", " + quantity);
+
+            Files.write(path, groceries);
+        } while (validator.yesNo("Add another item? Y/N"));
+//        Files.write(path, groceries, StandardOpenOption.APPEND); // write several lines to a file
 
         List<String> mySavedGroceries = Files.readAllLines(path); // read all the lines from a file
 
         for (String grocery: mySavedGroceries) {
             String[] parts = grocery.split(",");
-            System.out.println("Item: " + parts[0] + " , Quantity: " + parts[1]);
+            System.out.println("Item: " + parts[0] + " x" + parts[1]);
 
 //            System.out.println(grocery);
         }
