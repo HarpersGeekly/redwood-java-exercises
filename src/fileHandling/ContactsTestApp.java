@@ -123,7 +123,6 @@ public class ContactsTestApp {
     private static void deleteContact(List<String> contacts, Validator validator) {
 
         do {
-
             String contactName = validator.getString("Enter contact name (\"exit\" to cancel): ");
             boolean hasName = false;
 
