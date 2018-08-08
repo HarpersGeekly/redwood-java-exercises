@@ -1,8 +1,5 @@
 package fileHandling;
 
-import validator.FileHandler;
-import validator.Validator;
-
 public class Contact {
 
     private String firstName;
