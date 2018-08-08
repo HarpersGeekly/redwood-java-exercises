@@ -2,6 +2,8 @@ package fileHandling;
 
 import validator.FileHandler;
 import validator.Validator;
+
+import java.util.Arrays;
 import java.util.List;
 /**
  * Created by RyanHarper on 10/4/17.
@@ -10,6 +12,7 @@ public class ContactsTestApp {
 
     private static Validator validator = new Validator();
     private static FileHandler fileHandler = new FileHandler("data", "contacts.txt");
+    private static Contact contact = new Contact();
     private static List<String> contacts = fileHandler.retrieveFileContents();
 
     public static void main(String[] args) {
@@ -57,9 +60,11 @@ public class ContactsTestApp {
 
     private static void viewAllContacts(List<String> contacts) {
 
+        String name = "Name";
+        String phoneNumber = "Phone Number";
         System.out.println("Viewing All Contacts");
-        System.out.println("Name | Phone Number");
-        System.out.println("-------------------");
+        System.out.println(String.format("%-20s | %-15s", name, phoneNumber));
+        System.out.println("-----------------------------------------------");
         for (String contact : contacts) {
             System.out.println(contact);
         }
@@ -68,14 +73,28 @@ public class ContactsTestApp {
     private static void addNewContact(List<String> contacts, Validator validator) {
 
         do {
-            String contactName = validator.getString("Add Contact Name (\"exit\" to cancel): ");
-            if (contactName.equalsIgnoreCase("exit")) {
+            String contactNameFirst = validator.getString("First Name (\"exit\" to cancel): ");
+            String contactNameLast = validator.getString("Last Name (\"exit\" to cancel): ");
+            String contactPhoneNumber = validator.getPhoneNumber("Add Phone Number for Contact(xxx)xxx-xxxx:");
+
+            if (contactNameFirst.equalsIgnoreCase("exit") || contactNameLast.equalsIgnoreCase("exit")) {
                 showMainMenu();
                 break;
             }
-            String contactPhoneNumber = validator.getPhoneNumber("Add Phone Number for Contact(xxx)xxx-xxxx:");
-            contacts.add(contactName + " | " + contactPhoneNumber.replaceFirst("(\\d{3})(\\d{3})(\\d{4})", "($1) $2-$3"));
-            System.out.println(contactName + " | " + contactPhoneNumber.replaceFirst("(\\d{3})(\\d{3})(\\d{4})", "($1) $2-$3"));
+
+            contact.setFirstName(contactNameFirst.substring(0, 1).toUpperCase() + contactNameFirst.substring(1));
+            contact.setLastName(contactNameLast.substring(0, 1).toUpperCase() + contactNameLast.substring(1));
+            contact.setPhoneNumber(contactPhoneNumber);
+
+            contacts.add(contact.getFirstName() + " " + contact.getLastName() + " | "
+                    + contact.getPhoneNumber().replaceFirst("(\\d{3})(\\d{3})(\\d{4})", "($1) $2-$3"));
+
+            System.out.println(String.format("%-15s | %-15s",
+                    contact.getFirstName() + " " + contact.getLastName(),
+                    String.format("%-15s",
+                            contact.getPhoneNumber().replaceFirst("(\\d{3})(\\d{3})(\\d{4})", "($1) $2-$3")) + " has been added to your contacts list!"));
+//            System.out.println(contact.getFirstName() + " " + contact.getLastName() + " | " + contact.getPhoneNumber().replaceFirst("(\\d{3})(\\d{3})(\\d{4})", "($1) $2-$3") + " has been added to your contacts list!");
+
 
         } while (validator.yesNo("Add another contact? Y/N"));
     }
@@ -83,35 +102,45 @@ public class ContactsTestApp {
     private static void searchByName(List<String> contacts, Validator validator) {
 
         do {
-            String contactName = validator.getString("Enter contact name to search (\"exit\" to cancel): ");
+            String contactName = validator.getString("Enter contact name (\"exit\" to cancel): ");
+            boolean hasName = false;
+
+            hasName = isHasName(contacts, contactName, hasName);
+
+            if(!hasName) {
+                System.out.println("Sorry, no contact exists with that name.");
+//                searchByName(contacts, validator);
+                continue;
+            }
+
             if (contactName.equalsIgnoreCase("exit")) {
                 showMainMenu();
             }
-            for (String contact : contacts) {
-                if (contact.contains(contactName)) {
-                    System.out.println(contact);
-                }
-            }
+
         } while (validator.yesNo("Search another contact? Y/N"));
     }
 
     private static void deleteContact(List<String> contacts, Validator validator) {
 
         do {
-            String contactName = validator.getString("Enter contact name (\"exit\" to cancel):");
+
+            String contactName = validator.getString("Enter contact name (\"exit\" to cancel): ");
+            boolean hasName = false;
+
+            hasName = isHasName(contacts, contactName, hasName);
+
+            if(!hasName) {
+                System.out.println("Sorry, no contact exists with that name.");
+//                deleteContact(contacts, validator);
+            }
+
             if (contactName.equalsIgnoreCase("exit")) {
                 showMainMenu();
-                break;
             }
-//            for (String contact : contacts) {
-//                if (!contact.contains(contactName)) {
-//                    System.out.println("There is no contact with name: " + contactName);
-//                    deleteContact(contacts, validator);
-//                }
-//                break;
-//            }
+
             contacts.removeIf(contact -> {
-                if (contact.contains(contactName) && validator.yesNo("Delete " + contact + ", Y/N?")) {
+                String lower = contact.toLowerCase();
+                if (lower.contains(contactName.toLowerCase()) && validator.yesNo("Delete " + contact + ", Y/N?")) {
                     System.out.println("The contact, " + contact + " has been deleted.");
                     return true;
                 } else {
@@ -119,7 +148,18 @@ public class ContactsTestApp {
                 }
             });
         } while (validator.yesNo("Delete another contact? Y/N"));
+    }
 
+    private static boolean isHasName(List<String> contacts, String contactName, boolean hasName) {
+
+        for (String contact : contacts) {
+            String lower = contact.toLowerCase();
+            if (lower.contains(contactName.toLowerCase())) {
+                System.out.println(contact);
+                hasName = true;
+            }
+        }
+        return hasName;
     }
 }
 
