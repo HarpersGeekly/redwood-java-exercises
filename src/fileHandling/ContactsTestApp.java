@@ -3,6 +3,7 @@ package fileHandling;
 import validator.FileHandler;
 import validator.Validator;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 /**
@@ -14,6 +15,8 @@ public class ContactsTestApp {
     private static FileHandler fileHandler = new FileHandler("data", "contacts.txt");
     private static Contact contact = new Contact();
     private static List<String> contacts = fileHandler.retrieveFileContents();
+//    private static List<Contact> contacts = new ArrayList<>();
+//    private static List<String> fileContents = fileHandler.retrieveFileContents();
 
     public static void main(String[] args) {
 
@@ -60,13 +63,15 @@ public class ContactsTestApp {
 
     private static void viewAllContacts(List<String> contacts) {
 
-        String name = "Name";
-        String phoneNumber = "Phone Number";
         System.out.println("Viewing All Contacts");
-        System.out.println(String.format("%-20s | %-15s", name, phoneNumber));
+        System.out.println(String.format("%-20s | %-15s", "Name", "Phone Number"));
         System.out.println("-----------------------------------------------");
-        for (String contact : contacts) {
-            System.out.println(contact);
+
+        for (String c : contacts) {
+            String[] contact = c.split(" - ");
+            String name = contact[0];
+            String phoneNumber = contact[1];
+            System.out.println(String.format("%-20s | %-15s", name, phoneNumber));
         }
     }
 
