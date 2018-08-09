@@ -2,9 +2,6 @@ package fileHandling;
 
 import validator.FileHandler;
 import validator.Validator;
-
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 /**
  * Created by RyanHarper on 10/4/17.
@@ -15,8 +12,6 @@ public class ContactsTestApp {
     private static FileHandler fileHandler = new FileHandler("data", "contacts.txt");
     private static Contact contact = new Contact();
     private static List<String> contacts = fileHandler.retrieveFileContents();
-//    private static List<Contact> contacts = new ArrayList<>();
-//    private static List<String> fileContents = fileHandler.retrieveFileContents();
 
     public static void main(String[] args) {
 
@@ -64,23 +59,52 @@ public class ContactsTestApp {
     private static void viewAllContacts(List<String> contacts) {
 
         System.out.println("Viewing All Contacts");
-        System.out.println(String.format("%-20s | %-15s", "Name", "Phone Number"));
-        System.out.println("-----------------------------------------------");
 
-        for (String c : contacts) {
-            String[] contact = c.split(" - ");
-            String name = contact[0];
-            String phoneNumber = contact[1];
-            System.out.println(String.format("%-20s | %-15s", name, phoneNumber));
+        // =======if name is long, stretch the table==================[
+
+        int nameLength = 0;
+        for (String contact : contacts) {
+            int nameLengthTest = contact.lastIndexOf("-");
+
+            if (nameLengthTest > nameLength){
+                nameLength = nameLengthTest;
+            }
         }
+        StringBuilder formatBar = new StringBuilder("-");
+        while (formatBar.length() < (nameLength + 17)) {
+            formatBar.append("-");  // for printing the dashes
+//            formatBar += "-";  // Before StringBuilder, IntelliJ threw a suggestion on "+="
+        }
+        // ===========================================================]
+
+        String formatting = "%-"+ nameLength + "s | %-15s\n";
+        System.out.printf(formatting, "Name", "Phone Number");
+        System.out.println(formatBar);
+        for (String contact : contacts) {
+            String[] person = contact.split(" - ");
+            String name = person[0];
+            String phone = person[1];
+            System.out.printf(formatting, name, phone);
+        }
+
+        System.out.println(formatBar);
     }
 
     private static void addNewContact(List<String> contacts, Validator validator) {
+
+        final int MAX_STRING_LENGTH = 20;
 
         do {
             String contactNameFirst = validator.getString("First Name (\"exit\" to cancel): ");
             String contactNameLast = validator.getString("Last Name (\"exit\" to cancel): ");
             String contactPhoneNumber = validator.getPhoneNumber("Add Phone Number for Contact(xxx)xxx-xxxx:");
+
+            if(contactNameFirst.length() > MAX_STRING_LENGTH) {
+                System.out.println("Identity is too long.");
+                contactNameFirst = validator.getString("First Name (\"exit\" to cancel): ");
+                contactNameLast = validator.getString("Last Name (\"exit\" to cancel): ");
+                contactPhoneNumber = validator.getPhoneNumber("Add Phone Number for Contact(xxx)xxx-xxxx:");
+            }
 
             if (contactNameFirst.equalsIgnoreCase("exit") || contactNameLast.equalsIgnoreCase("exit")) {
                 showMainMenu();
@@ -90,16 +114,11 @@ public class ContactsTestApp {
             contact.setFirstName(contactNameFirst.substring(0, 1).toUpperCase() + contactNameFirst.substring(1));
             contact.setLastName(contactNameLast.substring(0, 1).toUpperCase() + contactNameLast.substring(1));
             contact.setPhoneNumber(contactPhoneNumber);
-
-            contacts.add(contact.getFirstName() + " " + contact.getLastName() + " | "
+            contacts.add(contact.getFirstName() + " " + contact.getLastName() + " - "
                     + contact.getPhoneNumber().replaceFirst("(\\d{3})(\\d{3})(\\d{4})", "($1) $2-$3"));
 
-            System.out.println(String.format("%-15s | %-15s",
-                    contact.getFirstName() + " " + contact.getLastName(),
-                    String.format("%-15s",
-                            contact.getPhoneNumber().replaceFirst("(\\d{3})(\\d{3})(\\d{4})", "($1) $2-$3")) + " has been added to your contacts list!"));
-//            System.out.println(contact.getFirstName() + " " + contact.getLastName() + " | " + contact.getPhoneNumber().replaceFirst("(\\d{3})(\\d{3})(\\d{4})", "($1) $2-$3") + " has been added to your contacts list!");
-
+            System.out.println(contact.getFirstName() + " " + contact.getLastName() + " - "
+                    + contact.getPhoneNumber().replaceFirst("(\\d{3})(\\d{3})(\\d{4})", "($1) $2-$3") + " has been added to your contacts list!");
 
         } while (validator.yesNo("Add another contact? Y/N"));
     }
@@ -166,6 +185,23 @@ public class ContactsTestApp {
         return hasName;
     }
 }
+
+// May consider creating a file list of objects...
+//    private static List<Contact> contacts = new ArrayList<>();
+//    private static List<String> fileContents = fileHandler.retrieveFileContents();
+
+//formatting the viewAllContacts used to look like this:
+
+//System.out.println("Viewing All Contacts");
+//        System.out.println(String.format("%-20s | %-15s", "Name", "Phone Number"));
+//        System.out.println("-----------------------------------------------");
+//
+//        for (String c : contacts) {
+//        String[] contact = c.split(" - ");
+//        String name = contact[0];
+//        String phoneNumber = contact[1];
+//        System.out.println(String.format("%-20s | %-15s", name, phoneNumber));
+//        }
 
 //============================================ Initial Instructions ====================================================
 //    Contacts Manager
